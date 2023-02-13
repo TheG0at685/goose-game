@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Levels/UI.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -11,17 +11,41 @@
 [ext_resource path="res://Levels/ParallaxBackground2.gd" type="Script" id=9]
 [ext_resource path="res://Assets/sounds/658266__matrixxx__retro-inspect-sound-ui-or-in-game-notification.wav" type="AudioStream" id=10]
 [ext_resource path="res://Assets/sounds/Goose theme.mp3" type="AudioStream" id=11]
-[ext_resource path="res://goose_idle (1).png" type="Texture" id=12]
-[ext_resource path="res://Assets/Images/speed.png" type="Texture" id=13]
-[ext_resource path="res://Levels/Sprite.gd" type="Script" id=14]
-[ext_resource path="res://Assets/Images/strength.png" type="Texture" id=15]
-[ext_resource path="res://Levels/Sprite2.gd" type="Script" id=16]
-[ext_resource path="res://Levels/Popup.gd" type="Script" id=17]
+[ext_resource path="res://Assets/Images/goose_idle (1).png" type="Texture" id=12]
 [ext_resource path="res://Levels/Camera2D.gd" type="Script" id=18]
 
 [sub_resource type="SphereMesh" id=3]
 
 [sub_resource type="QuadMesh" id=6]
+
+[sub_resource type="GDScript" id=12]
+script/source = "extends Popup
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func show_diolauge(name, image, diolauge):
+	visible = true
+	$Name.text = name
+	$Sprite.texture = image
+	$Diolauge.text = diolauge
+
+func hide_diolauge():
+	# Simple as that. This funtion is purley to improve organiation and readablity
+	visible = false
+"
 
 [sub_resource type="QuadMesh" id=8]
 
@@ -65,25 +89,13 @@ mesh = SubResource( 6 )
 scale = Vector2( 0.005, 0.01 )
 texture = ExtResource( 6 )
 
-[node name="Sprite" type="Sprite" parent="UI"]
-visible = false
-position = Vector2( 534, 282 )
-texture = ExtResource( 13 )
-script = ExtResource( 14 )
-
-[node name="Sprite2" type="Sprite" parent="UI"]
-visible = false
-position = Vector2( 534, 282 )
-texture = ExtResource( 15 )
-script = ExtResource( 16 )
-
 [node name="Diolauge" type="CanvasLayer" parent="UI"]
 layer = 128
 
 [node name="Popup" type="Popup" parent="UI/Diolauge"]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 17 )
+script = SubResource( 12 )
 
 [node name="ColorRect" type="ColorRect" parent="UI/Diolauge/Popup"]
 margin_left = 208.0

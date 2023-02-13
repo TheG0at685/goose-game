@@ -34,7 +34,7 @@ func change_level(position):
 	enemys.clear()
 	remove_child(level_instance)
 	menu_instance.queue_free()
-	$UI.level_transition(true)
+
 	for e in enemys:
 		remove_child(e)
 	if level == 1:
@@ -74,6 +74,7 @@ func new_level(level):
 		$UI.coins += 10
 	var level_format = "res://Level%d.tscn"
 	level1 = load(level_format % [level])
+	print(level1)
 	level_instance = level1.instance()
 	add_child(level_instance)
 	
