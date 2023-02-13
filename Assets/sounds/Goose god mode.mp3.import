@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Goose god mode.mp3-15ce509c358a035dbfec3ffdcfd904ec.mp3str"
+
+[deps]
+
+source_file="res://Assets/sounds/Goose god mode.mp3"
+dest_files=[ "res://.import/Goose god mode.mp3-15ce509c358a035dbfec3ffdcfd904ec.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

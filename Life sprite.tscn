@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/Life sprite.gd" type="Script" id=1]
+[ext_resource path="res://goose_idle (1).png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 170.923, -4.30896, 129.334, 98.1049 )
+
+[node name="Life sprite" type="Sprite"]
+position = Vector2( 69, 40 )
+scale = Vector2( 0.6, 0.6 )
+texture = SubResource( 12 )
+script = ExtResource( 1 )

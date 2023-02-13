@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/Pause menu.gd" type="Script" id=1]
+
+[node name="Pause menu" type="MarginContainer"]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+
+[node name="Resume" type="Button" parent="."]
+margin_right = 64.0
+margin_bottom = 40.0
+text = "Resume"

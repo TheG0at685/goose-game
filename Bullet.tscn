@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/Bullet.gd" type="Script" id=1]
+
+[sub_resource type="QuadMesh" id=4]
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.00278552, 0.0529248, 0.562674, 0.988858 )
+colors = PoolColorArray( 1, 0.0359408, 0.0359408, 1, 1, 0.0295983, 0.0295983, 1, 1, 0, 0, 1, 0.839844, 0.0568182, 0.0568182, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 5, 2 )
+
+[node name="Bullet" type="KinematicBody2D"]
+position = Vector2( 15, 0 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+self_modulate = Color( 0.976471, 0.0705882, 0.0705882, 1 )
+rotation = 1.5708
+scale = Vector2( 3, 10 )
+mesh = SubResource( 4 )
+texture = SubResource( 8 )
+
+[node name="Collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource( 5 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
