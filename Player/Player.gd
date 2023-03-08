@@ -2,13 +2,13 @@ extends KinematicBody2D
 
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
-var SPEED=400
+var SPEED=600
 const GRAVITY=51
 const JUMP_SPEED=1200
 const JUMP_SUBLIMIT = 80
 const WORLD_LIMIT=300000000000
 const MAX_BULLETS = 3
-const GUN_STRENGTH = 1.5
+const GUN_STRENGTH = 1.3
 var jump_count=0
 var wall_slide_speed=0
 var wall_slide_max=5
@@ -24,7 +24,7 @@ var right = "right"
 var jump = "jump"
 var facing = "right"
 
-var gun_shots = 10
+var gun_shots = 3
 var can_fire = true
 var reloading = false
 
@@ -85,9 +85,9 @@ func _physics_process(delta):
 			godmode = true
 	if godmode:
 		god_mode()
-		
-
-	gun()
+	
+	if motion.y > -100:
+		gun()
 	die()
 	$AnimatedSprite/Gun_body.look_at(get_parent().get_node("Target").position)
 
@@ -160,7 +160,7 @@ func gun():
 		if $Collision.overlaps_area(refill.get_node("Area2D")):
 			can_fire = true
 			gun_shots = MAX_BULLETS
-	if is_on_floor() or is_on_wall() and gun_shots < MAX_BULLETS:
+	if is_on_floor() and gun_shots < MAX_BULLETS:
 		gun_shots = MAX_BULLETS
 
 		
@@ -349,12 +349,13 @@ func animate(left,right):
 
 func fire_gun(x, y):
 	# Causes the player to be launched directly away from x and y
-	if motion.y > 0:
-		motion.y = -1
+	if not is_on_floor() and motion.y > 0:
+		motion.y = -10
 	if y > position.y:
-		motion.y -= maxi((y - position.y) * 6, 1000) * GUN_STRENGTH
+		motion.y -= clamp((y - position.y) * 6, 0, 1000) * GUN_STRENGTH
 		motion.y -= GRAVITY
-	motion.x += maxi((position.x - x), 1000) * GUN_STRENGTH
+	if not is_on_floor():
+		motion.x += clamp(position.x - x, -600, 600) * GUN_STRENGTH
 	create_bullet(current_weapon)
 	
 		
@@ -383,7 +384,7 @@ func die():
 	if position.y > 10000:
 		health = -1
 	if $Collision.overlaps_body(current_level.get_node("Danger")) and not hurt:
-		health -= 20
+		health -= 1000
 		Hurt()
 	for bullet in get_parent().enemy_bullets:
 		if $Collision.overlaps_area(bullet.get_node("Collision")):
