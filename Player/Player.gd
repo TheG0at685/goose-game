@@ -7,6 +7,8 @@ const GRAVITY=51
 const JUMP_SPEED=1200
 const JUMP_SUBLIMIT = 80
 const WORLD_LIMIT=300000000000
+const MAX_BULLETS = 3
+const GUN_STRENGTH = 1.5
 var jump_count=0
 var wall_slide_speed=0
 var wall_slide_max=5
@@ -20,6 +22,7 @@ var godmode = false
 var left = "left"
 var right = "right"
 var jump = "jump"
+var facing = "right"
 
 var gun_shots = 10
 var can_fire = true
@@ -37,14 +40,22 @@ var current_level
 var hurt = false
 
 
-var has_wall_jump = false
-var has_double_jump = false
+var has_wall_jump = true
+var max_jump_count = 1
 var has_gun = true
+var critical_chance = 0
 
 
 var lives = 5
 # A safe position the player will teleport to when hurt by spikes or other completly harmless inanimite objects
 var safe_spot = Vector2()
+
+
+var paused = false
+
+var max_jump = 1 
+
+var current_weapon = "normal"
 
 func _ready():
 	pass
@@ -53,17 +64,19 @@ func _physics_process(delta):
 	# Make sure the player level aligns with the actual level
 	current_level = get_parent().level_instance
 	
-	# These funtions trigger every frame for movment, animation, etc
+	# These funtions trigger every frame for movment, animation, etc 
 	apply_gravity()
-	move_and_slide(motion,UP)
+	
+	move_and_slide(motion, UP)
 	up_collision()
 	side_collision()
-	movement(left,right)
-	jumping(jump,left,right)
-	jump_breaker(jump)
-	early_jump(jump,left,right)
-	coyote_jump()
-	animate(left,right)
+	if not paused:
+		movement(left,right)
+		jumping(jump,left,right)
+		jump_breaker(jump)
+		early_jump(jump,left,right)
+		coyote_jump()
+		animate(left,right)
 	next_level(1)
 	if Input.is_action_just_pressed("god_mode"):
 		if godmode:
@@ -77,7 +90,7 @@ func _physics_process(delta):
 		# only let the player fire if we are falling
 		gun()
 	die()
-	$Gun_body.look_at(get_parent().get_node("Target").position)
+	$AnimatedSprite/Gun_body.look_at(get_parent().get_node("Target").position)
 
 func god_mode():
 	has_gun = true
@@ -95,6 +108,7 @@ func god_mode():
 		position.x += 10
 	if Input.is_action_pressed("left"):
 		position.x -= 10
+		get_parent().change_level(Vector2(0, 0))
 	if Input.is_key_pressed(KEY_1):
 		get_parent().level = 1
 		get_parent().change_level(Vector2(0, 0))
@@ -124,9 +138,9 @@ func god_mode():
 	
 		
 func gun():
-	if Input.is_action_pressed("fire") and gun_shots > 0 and can_fire and has_gun:
+	if Input.is_action_just_pressed("fire") and gun_shots > 0 and can_fire and has_gun:
 		get_tree().current_scene.get_node("Camera2D").shake()
-		if gun_shots == 20:
+		if gun_shots == MAX_BULLETS:
 			motion.y = 0
 		fire_gun(get_global_mouse_position().x, get_global_mouse_position().y)
 		gun_shots -= 1
@@ -135,19 +149,19 @@ func gun():
 		get_tree().current_scene.get_node("Camera2D").rotation = 0
 		reloading = true
 		can_fire = false
-	if can_fire == false and gun_shots > 9:
+	if can_fire == false and gun_shots > MAX_BULLETS-1:
 		can_fire = true
 	if reloading:
 		gun_shots += 0.1
-		if gun_shots > 9.9:
+		if gun_shots > MAX_BULLETS-0.1:
 			reloading = false
 	# Cycle through the refills. If touching, refill ammo and delete the refill
 	for refill in get_parent().refills:
 		if $Collision.overlaps_area(refill.get_node("Area2D")):
 			can_fire = true
-			gun_shots = 10
-	if is_on_floor() or is_on_wall() and gun_shots < 10:
-		gun_shots = 10
+			gun_shots = MAX_BULLETS
+	if is_on_floor() or is_on_wall() and gun_shots < MAX_BULLETS:
+		gun_shots = MAX_BULLETS
 
 		
 
@@ -177,7 +191,7 @@ func side_collision():
 			
 func apply_gravity():
 	if is_on_floor() and motion.y > 0:
-		jump_count=1
+		jump_count=max_jump_count
 		motion.y=1
 	elif is_on_wall() and motion.y > 0 and has_wall_jump:
 		if wall_slide_speed < wall_slide_max:
@@ -201,7 +215,9 @@ func movement(left,right):
 	elif motion.x<0 and is_on_floor():
 		motion.x = clamp(motion.x + 50, -SPEED, 0)
 		
+		
 func left():
+	facing = "left"
 	if motion.x <= -SPEED:
 		motion.x = -SPEED
 	else:
@@ -214,6 +230,7 @@ func left():
 			
 		
 func right():
+	facing = "right"
 	if motion.x >= SPEED:
 		motion.x = SPEED
 	else:
@@ -224,14 +241,17 @@ func right():
 		else:
 			motion.x+=50
 func jumping(jump,left,right):
+	if jump_count > 0:
+		can_jump = true
 	if Input.is_action_just_pressed(jump) or earlyjump:
 		#earlyjump variable here is makes sure player jumps even if we press slightly early
 			if is_on_floor() or can_jump:
+				$AnimatedSprite.stop()
+				$AnimatedSprite.frame = 0
 				$AnimatedSprite.play("jump")
+				
 				motion.y = -JUMP_SPEED
 				jump_count-=1
-				#this is normal jump, player can jump depends on how many jumps it left
-				#default jump count is 1 but you can make it double jump by adjusting jump_count in apply_gravity function
 			elif $AnimatedSprite.animation == "wallslide" and can_wall_jump and has_wall_jump:
 				if not is_on_floor():
 					if $AnimatedSprite.flip_h:
@@ -276,29 +296,29 @@ func animate(left,right):
 				$AnimatedSprite.play("jump")
 		elif motion.x != 0 and not is_on_wall():
 			$AnimatedSprite.get_sprite_frames().set_animation_speed("walk", 24)
-			if motion.x < 0:
+			if facing=="left" and is_on_floor():
 				if Input.is_action_pressed(left):
 					$AnimatedSprite.flip_h=true
 					$AnimatedSprite.play("walk")
-					$Gun_body/Gun.flip_h=false
-					$Gun_body/Gun.flip_v=false
-					$Gun_body.position = Vector2(-70, 0)
+					$AnimatedSprite/Gun_body/Gun.flip_h=false
+					$AnimatedSprite/Gun_body/Gun.flip_v=false
+					$AnimatedSprite/Gun_body.position = Vector2(-70, 0)
 				else:
 					$AnimatedSprite.play("default")
-			elif motion.x > 0:
+			elif facing=="right" and is_on_floor():
 				if Input.is_action_pressed(right):
 					$AnimatedSprite.flip_h=false
 					$AnimatedSprite.play("walk")
-					$Gun_body/Gun.flip_h=false
-					$Gun_body/Gun.flip_v=true
-					$Gun_body.position = Vector2(70, 0)
+					$AnimatedSprite/Gun_body/Gun.flip_h=false
+					$AnimatedSprite/Gun_body/Gun.flip_v=true
+					$AnimatedSprite/Gun_body.position = Vector2(70, 0)
 				else:
 					$AnimatedSprite.play("default")
 		elif motion.y == 0 and is_on_wall():
-			if motion.x < 0:
+			if facing=="left":
 				$AnimatedSprite.flip_h=true
 				$AnimatedSprite.play("default")
-			elif motion.x > 0:
+			elif facing=="right":
 				$AnimatedSprite.flip_h=false
 				$AnimatedSprite.play("default")
 		elif motion.y != 0  and is_on_wall():
@@ -330,9 +350,10 @@ func animate(left,right):
 func fire_gun(x, y):
 	# Causes the player to be launched directly away from x and y
 	if y > position.y:
-		motion.y -= maxi((y - position.y) * 6, 1000)
+		motion.y -= maxi((y - position.y) * 6, 1000) * GUN_STRENGTH
 		motion.y -= GRAVITY
-	create_bullet()
+	motion.x += maxi((position.x - x), 1000) * GUN_STRENGTH
+	create_bullet(current_weapon)
 	
 		
 func maxi(equ, maximum):
@@ -342,16 +363,22 @@ func maxi(equ, maximum):
 	else:
 		return equ
 		
-func create_bullet():
-	var bullet = load("res://Bullet.tscn")
-	var bullet_instance = bullet.instance()
-	get_parent().add_child(bullet_instance)
-	bullet_instance.side = "player"
-	get_parent().player_bullets.append(bullet_instance)
-	bullet_instance.position = position
-	bullet_instance.look_at(get_global_mouse_position())
-	bullet_instance.rotation_degrees += 180 + rand_range(-5, 5)
-
+func create_bullet(type):
+	if type == "normal":
+		var bullet = load("res://Bullet.tscn")
+		var bullet_instance = bullet.instance()
+		get_parent().add_child(bullet_instance)
+		bullet_instance.side = "player"
+		get_parent().player_bullets.append(bullet_instance)
+		bullet_instance.position = position
+		bullet_instance.look_at(get_global_mouse_position())
+		bullet_instance.rotation_degrees += 180 + rand_range(-5, 5)
+	elif type=="rock" and Input.is_action_just_pressed("fire"):
+		var bullet = load("res://rock.tscn")
+		var bullet_instance = bullet.instance()
+		get_parent().add_child(bullet_instance)
+		bullet_instance.side = "player"
+		get_parent().player_bullets.append(bullet_instance)
 	
 	
 func die():
@@ -381,7 +408,7 @@ func die():
 			get_parent().enemys.erase(enemy)
 		
 		if lives < 1:
-			get_parent().level = 1
+			get_parent().level = 4
 			get_parent().change_level(Vector2(0, 0))
 			lives = 5
 		else:
@@ -399,12 +426,6 @@ func next_level(change):
 		
 	
 	
-		
-func glow():
-	if $WorldEnvironment.environment.glow_intensity < 2:
-		$WorldEnvironment.environment.glow_intensity += 0.5
-	else:
-		$WorldEnvironment.environment.glow_hdr_threshold -= 0.5
 
 func Hurt():
 	# Starts immunnity timer and knocks you away from threat
@@ -415,8 +436,10 @@ func Hurt():
 	hurt = true
 	$"damage cooldown".start()
 	
+
 	
 func _on_damage_cooldown_timeout():
 	hurt = false
+
 
 

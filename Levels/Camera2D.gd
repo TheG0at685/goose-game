@@ -14,12 +14,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$Area2D.scale.x = zoom.x * 3.5
 	$Area2D.position = get_parent().get_node("Player").position - position
 	for door in get_parent().level_instance.doors:
 		if not $Area2D.overlaps_area(door):
-			position = get_parent().get_node("Player").position
-		else:
-			print(1)
+			position.x = get_parent().get_node("Player").position.x
+		position.y = get_parent().get_node("Player").position.y
 	if not Input.is_action_pressed("fire"):
 		defualt()
 	
