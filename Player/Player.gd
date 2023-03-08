@@ -86,9 +86,8 @@ func _physics_process(delta):
 	if godmode:
 		god_mode()
 		
-	if motion.y > 0:
-		# only let the player fire if we are falling
-		gun()
+
+	gun()
 	die()
 	$AnimatedSprite/Gun_body.look_at(get_parent().get_node("Target").position)
 
@@ -139,12 +138,13 @@ func god_mode():
 		
 func gun():
 	if Input.is_action_just_pressed("fire") and gun_shots > 0 and can_fire and has_gun:
-		get_tree().current_scene.get_node("Camera2D").shake()
+		get_tree().current_scene.get_node("Camera2D").shake(0.2, 15, 30)
 		if gun_shots == MAX_BULLETS:
 			motion.y = 0
 		fire_gun(get_global_mouse_position().x, get_global_mouse_position().y)
+		print(gun_shots)
 		gun_shots -= 1
-	if gun_shots < 1:
+	if gun_shots < 1 and is_on_floor(): 
 		get_tree().current_scene.get_node("Camera2D").position = Vector2(0, 0)
 		get_tree().current_scene.get_node("Camera2D").rotation = 0
 		reloading = true
@@ -349,6 +349,8 @@ func animate(left,right):
 
 func fire_gun(x, y):
 	# Causes the player to be launched directly away from x and y
+	if motion.y > 0:
+		motion.y = -1
 	if y > position.y:
 		motion.y -= maxi((y - position.y) * 6, 1000) * GUN_STRENGTH
 		motion.y -= GRAVITY
@@ -373,12 +375,7 @@ func create_bullet(type):
 		bullet_instance.position = position
 		bullet_instance.look_at(get_global_mouse_position())
 		bullet_instance.rotation_degrees += 180 + rand_range(-5, 5)
-	elif type=="rock" and Input.is_action_just_pressed("fire"):
-		var bullet = load("res://rock.tscn")
-		var bullet_instance = bullet.instance()
-		get_parent().add_child(bullet_instance)
-		bullet_instance.side = "player"
-		get_parent().player_bullets.append(bullet_instance)
+
 	
 	
 func die():
