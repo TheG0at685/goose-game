@@ -46,7 +46,7 @@ var has_gun = true
 var critical_chance = 0
 
 
-var lives = 5
+var lives = 1
 # A safe position the player will teleport to when hurt by spikes or other completly harmless inanimite objects
 var safe_spot = Vector2()
 
@@ -381,7 +381,7 @@ func create_bullet(type):
 	
 func die():
 	# Every possible way to die! What a cheery function!
-	if position.y > 10000:
+	if position.y > 3000:
 		health = -1
 	if $Collision.overlaps_body(current_level.get_node("Danger")) and not hurt:
 		health -= 1000
@@ -406,12 +406,9 @@ func die():
 			get_parent().enemys.erase(enemy)
 		
 		if lives < 1:
-			get_parent().level = 4
 			get_parent().change_level(Vector2(0, 0))
-			lives = 5
-		else:
-			get_parent().change_level(Vector2(0, 0))
-			lives -= 1
+			lives = 1
+	
 
 	
 func next_level(change):

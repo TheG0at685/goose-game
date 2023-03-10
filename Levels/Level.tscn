@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Levels/UI.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=3]
 [ext_resource path="res://Levels/Target.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Images/desert_65x36.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Images/costume8 (1).png" type="Texture" id=6]
 [ext_resource path="res://Assets/Images/cover.png" type="Texture" id=7]
 [ext_resource path="res://Levels/Cover.gd" type="Script" id=8]
 [ext_resource path="res://Levels/ParallaxBackground2.gd" type="Script" id=9]
@@ -94,8 +93,6 @@ tracks/2/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="QuadMesh" id=6]
-
 [sub_resource type="GDScript" id=12]
 script/source = "extends Popup
 
@@ -162,19 +159,6 @@ color = Color( 0, 0, 0, 0 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ScreenFade"]
 anims/RESET = SubResource( 13 )
 "anims/screen fade" = SubResource( 14 )
-
-[node name="Lives" type="StaticBody2D" parent="UI"]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="UI"]
-visible = false
-self_modulate = Color( 0, 0, 0, 0.392157 )
-position = Vector2( 539, 541 )
-scale = Vector2( 147.5, 117 )
-mesh = SubResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="UI/MeshInstance2D"]
-scale = Vector2( 0.005, 0.01 )
-texture = ExtResource( 6 )
 
 [node name="Diolauge" type="CanvasLayer" parent="UI"]
 layer = 128
