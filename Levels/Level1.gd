@@ -1,10 +1,7 @@
 extends KinematicBody2D
 
 
-onready var doors = [$right]
-
-var meteorite = load("Meteorite.tscn")
-var meteorite_timer = 600
+onready var camera_pos = $Camera2D.position
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

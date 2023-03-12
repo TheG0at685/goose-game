@@ -54,6 +54,7 @@ func new_level(pos, checking):
 			level1 = load(level_format % [level])
 			level_instance = level1.instance()
 			add_child(level_instance)
+			$Camera2D.offset = $Player.position
 	
 func play_music():
 	if not $AudioStreamPlayer2D.playing:
@@ -70,3 +71,8 @@ func play_music():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	pass
+
+
+func _on_Button_pressed():
+	level = $"UI/debug menu/SpinBox".step
+	change_level(Vector2(0, 0))

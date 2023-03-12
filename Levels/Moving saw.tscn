@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/Moving saw.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Images/desert tile map.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=41]
+
+[node name="Moving saw" type="KinematicBody2D" groups=["dangers"]]
+position = Vector2( 307, 0 )
+script = ExtResource( 1 )
+position2 = Vector2( 1500, 0 )
+
+[node name="Item" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+shape = SubResource( 41 )
+
+[node name="Sprite" type="Sprite" parent="Item"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 34.722, 93.9101, 92.1481 )
+
+[node name="Tween" type="Tween" parent="."]
