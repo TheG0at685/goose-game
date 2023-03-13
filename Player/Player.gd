@@ -13,7 +13,7 @@ const MAX_MOTION = Vector2(1000, 1500)
 const STOP_SPEED = 100
 var jump_count=0
 var wall_slide_speed=0
-var wall_slide_max=5
+var wall_slide_max=2
 var is_working = true
 var earlyjump = false 
 var can_jump = false
@@ -29,6 +29,8 @@ var facing = "right"
 var gun_shots = MAX_BULLETS
 var can_fire = true
 var reloading = false
+
+var wall_jumping = false
 
 var health = 100
 
@@ -56,6 +58,8 @@ var max_jump = 1
 
 var current_weapon = "normal"
 
+
+
 func _ready():
 	pass
 	
@@ -67,6 +71,7 @@ func _physics_process(delta):
 	apply_gravity()
 	motion.x = clamp(motion.x, -MAX_MOTION.x, MAX_MOTION.x)
 	motion.y = clamp(motion.y, -MAX_MOTION.y, MAX_MOTION.y)
+	bounce()
 	move_and_slide(motion, UP)
 	up_collision()
 	side_collision()
@@ -129,7 +134,7 @@ func gun():
 		get_parent().get_node("Camera2D").shake(60, 0, 5)
 		if gun_shots == MAX_BULLETS:
 			motion.y = 0
-		fire_gun(get_global_mouse_position().x, get_global_mouse_position().y)
+		fire_gun(get_parent().get_node("Target").position.x, get_parent().get_node("Target").position.y)
 		gun_shots -= 1
 	if gun_shots < 1 and is_on_floor(): 
 		reloading = true
@@ -147,6 +152,7 @@ func gun():
 			gun_shots = MAX_BULLETS
 	if is_on_floor() and gun_shots < MAX_BULLETS:
 		gun_shots = MAX_BULLETS
+		wall_jumping = false
 		
 	# Reward the player with a purple flash after running out of ammo
 	if gun_shots == 0:
@@ -170,16 +176,14 @@ func up_collision():
 		
 func side_collision():
 	#this function makes player stick to wall, also it stops player running animations when it hits a wall
-	if $AnimatedSprite.animation=="wallslide":
-		if is_on_wall() and not is_on_floor():
-			if $AnimatedSprite.flip_h:
-				motion.x = 0
-			elif not $AnimatedSprite.flip_h:
-				motion.x = 0
-			can_wall_jump = true
-			yield(get_tree().create_timer(0.1),"timeout")
-			can_wall_jump = false
+	if is_on_wall() and not is_on_floor():
+		if $AnimatedSprite.flip_h:
+			motion.x = 0
+		elif not $AnimatedSprite.flip_h:
+			motion.x = 0
+		can_wall_jump = true
 	else:
+		can_wall_jump = false
 		if is_on_wall():
 			motion.x=0
 			
@@ -188,16 +192,31 @@ func apply_gravity():
 	if is_on_floor() and motion.y > 0:
 		jump_count=max_jump_count
 		motion.y=1
-	elif is_on_wall() and motion.y > 0 and has_wall_jump:
+	elif is_on_wall() and motion.y > 0 and has_wall_jump and motion.y < 1000:
 		if wall_slide_speed < wall_slide_max:
-			motion.y += 1
+			if not motion.x == 0:
+				motion.y += 0.01
+			else:
+				print(motion.x, 193)
+				motion.y += 1
 			wall_slide_speed=motion.y
 		else:
 			wall_slide_speed=wall_slide_max
-			motion.y += 1
+			if not motion.x == 0:
+				motion.y += 0.01
+			else:
+				motion.y += 1
 	else:
 		motion.y+=GRAVITY
 		can_jump = false
+		
+	if not is_on_floor() and is_on_wall() and (not motion.x == 0 or Input.is_action_pressed("jump")):
+		if $AnimatedSprite.flip_h:
+			motion.x -= 10
+		elif $AnimatedSprite.flip_h == false:
+			motion.x += 10
+		if motion.y > 100:
+			motion.y = 100
 		
 func movement(left,right):
 	if Input.is_action_pressed(left) and not Input.is_action_pressed(right):
@@ -216,34 +235,44 @@ func movement(left,right):
 	else:
 		if SPEED > 400:
 			SPEED -= 20
+			
+	if is_on_wall() and not is_on_floor():
+		if $AnimatedSprite.flip_h:
+			motion.x -= SPEED
+		else:
+			motion.x += SPEED
 		
 		
 func left():
+	$AnimatedSprite.flip_h = true
 	facing = "left"
 	# Dont use speedcap if the player has been launched by somthing
-	if motion.x <= -SPEED and motion.x > -SPEED-51:
-		motion.x = -SPEED
-	else:
-		if is_on_wall() and $AnimatedSprite.animation == "wallslide":
-			if motion.x == 1:
-				yield(get_tree().create_timer(0.1),"timeout")
-				motion.x -= 50
+	if not wall_jumping:
+		if motion.x <= -SPEED and motion.x > -SPEED-51:
+			motion.x = -SPEED
 		else:
-			motion.x-=50
+			if is_on_wall() and $AnimatedSprite.animation == "wallslide":
+				if motion.x == 1:
+					yield(get_tree().create_timer(0.1),"timeout")
+					motion.x -= 50
+			else:
+				motion.x-=50
 			
 		
 func right():
+	$AnimatedSprite.flip_h = false
 	facing = "right"
 	# Dont use speedcap if the player has been launched by somthing
-	if motion.x >= SPEED and motion.x < SPEED+51:
-		motion.x = SPEED
-	else:
-		if is_on_wall() and $AnimatedSprite.animation == "wallslide":
-			if motion.x == -1:
-				yield(get_tree().create_timer(0.1),"timeout")
-				motion.x += 50
+	if not wall_jumping:
+		if motion.x >= SPEED and motion.x < SPEED+51:
+			motion.x = SPEED
 		else:
-			motion.x+=50
+			if is_on_wall() and $AnimatedSprite.animation == "wallslide":
+				if motion.x == -1:
+					yield(get_tree().create_timer(0.1),"timeout")
+					motion.x += 50
+			else:
+				motion.x+=50
 func jumping(jump,left,right):
 	if jump_count > 0:
 		if (jump_count == max_jump_count and is_on_floor()) or jump_count < max_jump_count:
@@ -257,15 +286,27 @@ func jumping(jump,left,right):
 				
 				motion.y = -JUMP_SPEED
 				jump_count-=1
-			elif $AnimatedSprite.animation == "wallslide" and can_wall_jump and has_wall_jump:
-				if not is_on_floor():
-					if $AnimatedSprite.flip_h:
-						motion.y = -JUMP_SPEED*(1)
+			elif is_on_wall() and not is_on_floor():
+				print(284)
+				motion.x = 0
+				wall_jumping = true
+				if $AnimatedSprite.flip_h:
+					$AnimatedSprite.flip_h = false
+					motion.y = -JUMP_SPEED*(1)
+					motion.x = SPEED*3
+					if Input.is_action_pressed("right"):
 						motion.x = SPEED
-					else:
-						motion.y = -JUMP_SPEED*(1)
+				else:
+					$AnimatedSprite.flip_h = false
+					motion.y = -JUMP_SPEED*(1)
+					motion.x = -SPEED*3
+					if Input.is_action_pressed("left"):
 						motion.x = -SPEED
-					#this part makes player jump from walls to right direction
+				#this part makes player jump from walls to right direction
+				
+	if motion.y > -1:
+		wall_jumping = false
+				
 				
 func jump_breaker(jump):
 	#this code adjusts the jump height by how much we hold jump key
@@ -378,7 +419,7 @@ func create_bullet(type):
 		bullet_instance.side = "player"
 		get_parent().player_bullets.append(bullet_instance)
 		bullet_instance.position = position
-		bullet_instance.look_at(get_global_mouse_position())
+		bullet_instance.look_at(get_parent().get_node("Target").position)
 		bullet_instance.rotation_degrees += 180 + rand_range(-5, 5)
 
 	
@@ -443,7 +484,8 @@ func Hurt():
 func bounce():
 	for bounce in get_tree().get_nodes_in_group("bounceys"):
 		if $Collision.overlaps_area(bounce.get_node("Area2D")):
-			motion += bounce.transform.x * SPEED * 10
+			motion.y = 0
+			motion += bounce.transform.x * SPEED * bounce.power
 			bounce.get_node("AnimationPlayer").play("bounce")
 			gun_shots = MAX_BULLETS
 	

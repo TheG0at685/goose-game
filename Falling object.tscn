@@ -20,7 +20,7 @@
 0/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=46]
-extents = Vector2( 72.5, 34.5 )
+extents = Vector2( 72.5, 75 )
 
 [sub_resource type="ParticlesMaterial" id=47]
 emission_shape = 1
@@ -51,7 +51,7 @@ tile_data = PoolIntArray( -1, -1073741824, 0, -65536, 0, 0, 65535, 1610612736, 0
 position = Vector2( 2, -66 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 1.5, 24.5 )
+position = Vector2( 1.5, 65 )
 shape = SubResource( 46 )
 
 [node name="Particles2D" type="Particles2D" parent="."]

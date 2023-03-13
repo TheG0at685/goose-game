@@ -474,7 +474,7 @@ tile_data = PoolIntArray( -983000, 6, 0, -982999, 5, 0, -982998, 5, 0, -982997, 
 position = Vector2( 2177, 63 )
 script = ExtResource( 7 )
 trans_data = {
-"level": 5,
+"level": 6,
 "position": Vector2( 0, 0 )
 }
 

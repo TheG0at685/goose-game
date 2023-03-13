@@ -46,6 +46,7 @@ func change_level(pos):
 func new_level(pos, checking):
 	$UI/ScreenFade/AnimationPlayer.play("screen fade")
 	$Player.position = pos
+	$Player.motion = Vector2(0, 0)
 	for i in range(checking):
 		if level == i+1:
 			if level > 1:
@@ -74,5 +75,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_Button_pressed():
-	level = $"UI/debug menu/SpinBox".step
+	level = int($"UI/debug menu/SpinBox".text)
 	change_level(Vector2(0, 0))
