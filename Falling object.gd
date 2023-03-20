@@ -4,6 +4,9 @@ extends KinematicBody2D
 var falling = false
 var shot = false
 var gravity = 0
+var touched_ground = false
+# Some collisions don't seem to be detected by is_on_floor() so this will check if falling object has been moved on the y
+var prev_y_pos = position.y
 export var fall_on_touch = false
 export var wait_time = 0.0
 
@@ -21,11 +24,20 @@ func _process(delta):
 
 		
 	if shot:
-		if not is_on_floor():
+		move_and_slide(Vector2(0, gravity), Vector2(0, -1))
+		if not is_on_floor() or prev_y_pos == position.y:
 			gravity += 5
 		else:
+			touched_ground = true
 			gravity = 0
 		$Particles2D.emitting = false
-		move_and_slide(Vector2(0, gravity), Vector2(0, -1))
 	else:
 		$Particles2D.emitting = true
+		
+		
+		
+		
+		
+	
+
+

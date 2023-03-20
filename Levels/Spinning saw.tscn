@@ -9,6 +9,7 @@
 
 [node name="Spinning saw" type="KinematicBody2D" groups=["dangers"]]
 position = Vector2( 404, 170 )
+rotation = 25.761
 script = ExtResource( 1 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]

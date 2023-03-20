@@ -13,6 +13,9 @@ var level = 1
 var pause_menu = load("res://Pause menu.tscn")
 var menu_instance = pause_menu.instance()
 
+# The closer it is to 0, the faster it will run
+var run_speed = 0
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +28,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	play_music()
-	
+
 func change_level(pos):
 	# Reset the scrolling background
 	$ParallaxBackground2.offset = Vector2(0, 0)
@@ -55,8 +58,9 @@ func new_level(pos, checking):
 			level1 = load(level_format % [level])
 			level_instance = level1.instance()
 			add_child(level_instance)
-			$Camera2D.offset = $Player.position
-	
+	for bullet in player_bullets:
+		player_bullets.erase(bullet)
+		bullet.queue_free()
 func play_music():
 	if not $AudioStreamPlayer2D.playing:
 		if not $Player.godmode or level == 9:
@@ -77,3 +81,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_Button_pressed():
 	level = int($"UI/debug menu/SpinBox".text)
 	change_level(Vector2(0, 0))
+	
+func time_slow():
+	if Input.is_action_pressed("time slow"):
+		if run_speed > 0.1:
+			run_speed += 0.005
+	else:
+		run_speed = 0

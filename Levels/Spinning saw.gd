@@ -1,9 +1,9 @@
+tool
 extends KinematicBody2D
 
 
 export var spin_speed = 1.0
 export var length = 300
-
 
 
 # Called when the node enters the scene tree for the first time.
