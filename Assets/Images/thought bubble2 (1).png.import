@@ -2,16 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/thought bubble2 (1).png-140823817b05c4b868850ec08f2e76ac.stex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Assets/Images/thought bubble2 (1).png"
-dest_files=[ "res://.import/thought bubble2 (1).png-140823817b05c4b868850ec08f2e76ac.stex" ]
-
 [params]
 
 compress/mode=0

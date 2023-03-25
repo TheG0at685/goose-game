@@ -169,7 +169,7 @@ func apply_gravity():
 	if is_on_floor() and motion.y > 0:
 		jump_count=max_jump_count
 		motion.y=1
-	elif is_on_wall() and not is_on_floor():
+	elif is_on_wall() and not is_on_floor() and Input.is_action_pressed("wall hold"):
 		if motion.y > 0:
 			motion.y = 0
 			
@@ -377,7 +377,7 @@ func create_bullet(type="normal"):
 	
 func die():
 	# Every possible way to die! What a cheery function!
-	if position.y > 100000:
+	if position.y > 10000:
 		health = -1
 	if $Collision.overlaps_body(current_level.get_node("Danger")) and not hurt:
 		health -= 1000
@@ -392,9 +392,7 @@ func die():
 				health -= 15
 				Hurt()
 				
-	for item in get_tree().get_nodes_in_group("dangers"):
-		if $Collision.overlaps_area(item.get_node("Item")):
-			health = -1
+
 			
 	if health < 0:
 		get_parent().change_level(Vector2(0, 0))

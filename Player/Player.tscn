@@ -1,11 +1,12 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Assets/Images/goose_idle (1).png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Levels/light.jpeg" type="Texture" id=3]
 [ext_resource path="res://Assets/Images/Goose gun.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Images/goose_walk_2.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Images/goose_walk_3goose_idle2costume2costume6goose_idle2costume2costume5.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Images/thought bubble7.png" type="Texture" id=7]
+[ext_resource path="res://Player/Thought.gd" type="Script" id=7]
 [ext_resource path="res://Player/Gun_body.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Images/goose_walk_4.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Images/goose_walk_1goose_idle2costume2costume3.png" type="Texture" id=10]
@@ -21,19 +22,9 @@
 [ext_resource path="res://Assets/Images/goose_jump3 (1).png" type="Texture" id=20]
 [ext_resource path="res://Assets/Images/Goose arm.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Images/thought bubble2.png" type="Texture" id=22]
-[ext_resource path="res://Assets/Images/thought bubble4 (1).png" type="Texture" id=23]
-[ext_resource path="res://Assets/Images/thought bubble9 (1).png" type="Texture" id=24]
-[ext_resource path="res://Assets/Images/thought bubble2 (1).png" type="Texture" id=25]
 [ext_resource path="res://Assets/Images/thought bubble8.png" type="Texture" id=26]
-[ext_resource path="res://Assets/Images/thought bubble6 (1).png" type="Texture" id=27]
-[ext_resource path="res://Assets/Images/thought bubble8 (1).png" type="Texture" id=28]
-[ext_resource path="res://Assets/Images/thought bubble5 (1).png" type="Texture" id=29]
 [ext_resource path="res://Assets/Images/thought bubble6.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Images/thought bubble4.png" type="Texture" id=31]
-[ext_resource path="res://Assets/Images/thought bubble3 (1).png" type="Texture" id=32]
-[ext_resource path="res://Assets/Images/thought bubble11.png" type="Texture" id=33]
-[ext_resource path="res://Assets/Images/thought bubble12.png" type="Texture" id=34]
-[ext_resource path="res://Assets/Images/thought bubble13.png" type="Texture" id=35]
 [ext_resource path="res://Assets/Images/thought bubble5.png" type="Texture" id=36]
 [ext_resource path="res://Assets/Images/goose_jump8 (1).png" type="Texture" id=37]
 
@@ -43,11 +34,6 @@ animations = [ {
 "loop": true,
 "name": "Gun jump",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 32 ), ExtResource( 23 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 28 ), ExtResource( 24 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
-"loop": true,
-"name": "Wall jump",
-"speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
@@ -108,10 +94,13 @@ extents = Vector2( 113.548, 169.535 )
 script = ExtResource( 2 )
 
 [node name="Thought" type="AnimatedSprite" parent="."]
+pause_mode = 2
 position = Vector2( -745, -729 )
 scale = Vector2( 3.22222, 3.13568 )
+z_index = 1000
 frames = SubResource( 12 )
 playing = true
+script = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -159,7 +148,15 @@ wait_time = 0.2
 [node name="Wall jump cooldown" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 30, 2 )
+scale = Vector2( 3.28037, 3.95982 )
+texture = ExtResource( 3 )
+range_layer_min = -128
+range_layer_max = 1
+
 [connection signal="animation_finished" from="Thought" to="." method="_on_Thought_animation_finished"]
+[connection signal="animation_finished" from="Thought" to="Thought" method="_on_Thought_animation_finished"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_CoyoteTimer_timeout"]
 [connection signal="timeout" from="damage cooldown" to="." method="_on_damage_cooldown_timeout"]
 [connection signal="timeout" from="CoyoteWallJumpTimer" to="." method="_on_CoyoteWallJumpTimer_timeout"]

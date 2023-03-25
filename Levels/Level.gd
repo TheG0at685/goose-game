@@ -9,7 +9,7 @@ var enemys = []
 
 var level1
 var level_instance
-var level = 1
+var level = 3
 var pause_menu = load("res://Pause menu.tscn")
 var menu_instance = pause_menu.instance()
 
@@ -20,7 +20,7 @@ var run_speed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	new_level(Vector2(0, 0), 1)
+	new_level(Vector2(0, 0), 3)
 	add_child(menu_instance)
 
 	# Draw the pause menu after everything else to put it at the front of the scene
