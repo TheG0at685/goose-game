@@ -1,4 +1,4 @@
-tool
+
 extends KinematicBody2D
 
 export var moving = true

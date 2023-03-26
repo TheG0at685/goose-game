@@ -20,13 +20,15 @@ func _process(delta):
 	velocity = Vector2(-speed, 0).rotated(rotation)
 	velocity = move_and_slide(velocity)
 	
-	if $Collision.overlaps_body(get_parent().get_node("Player").current_level.get_node("TileMap")):
-		# If touching the map delete the instance and its object in the level array
-		if side == "player":
-			get_parent().player_bullets.erase(self)
-		else:
-			get_parent().enemy_bullets.erase(self)
-		queue_free()
+	for tilemap in get_tree().current_scene.level_instance.get_children():
+		if "TileMap" in str(tilemap):
+			if $Collision.overlaps_body(tilemap):
+				# If touching the map delete the instance and its object in the level array
+				if side == "player":
+					get_parent().player_bullets.erase(self)
+				else:
+					get_parent().enemy_bullets.erase(self)
+				queue_free()
 		
 	if side == "enemy":
 		# Logic for specifcily enenmy bullets

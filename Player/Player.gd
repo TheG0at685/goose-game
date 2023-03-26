@@ -55,7 +55,7 @@ func _physics_process(delta):
 	motion.x = clamp(motion.x, -MAX_MOTION.x, MAX_MOTION.x)
 	motion.y = clamp(motion.y, -MAX_MOTION.y, MAX_MOTION.y)
 	bounce()
-	move_and_slide(motion, UP)
+	move_and_slide(motion, UP, false, 4, 0.785398, false)
 	up_collision()
 	side_collision()
 	if not paused:
@@ -248,6 +248,9 @@ func jumping(jump,left,right):
 				
 				motion.y = -JUMP_SPEED
 				jump_count-=1
+				
+				# Being able to jump gaurentees that the player is on the ground
+				gun_shots = MAX_BULLETS
 
 		
 			
@@ -377,7 +380,7 @@ func create_bullet(type="normal"):
 	
 func die():
 	# Every possible way to die! What a cheery function!
-	if position.y > 10000:
+	if position.y > 4000:
 		health = -1
 	if $Collision.overlaps_body(current_level.get_node("Danger")) and not hurt:
 		health -= 1000
@@ -400,10 +403,7 @@ func die():
 		position = respawn
 		position = Vector2(0,0)
 		motion = Vector2(0,1000)
-		for enemy in get_parent().enemys:
-			enemy.queue_free()
-			get_parent().enemys.erase(enemy)
-		
+
 		if lives < 1:
 			get_parent().change_level(Vector2(0, 0))
 			lives = 1

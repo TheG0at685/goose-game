@@ -9,25 +9,26 @@ var enemys = []
 
 var level1
 var level_instance
-var level = 3
+var level = 1
 var pause_menu = load("res://Pause menu.tscn")
 var menu_instance = pause_menu.instance()
 
 # The closer it is to 0, the faster it will run
 var run_speed = 0
+var current_song = "Goose theme.mp3"
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	new_level(Vector2(0, 0), 3)
+	new_level(Vector2(0, 0), level)
 	add_child(menu_instance)
 
 	# Draw the pause menu after everything else to put it at the front of the scene
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	play_music()
+	pass
 
 func change_level(pos):
 	# Reset the scrolling background
@@ -40,7 +41,8 @@ func change_level(pos):
 
 	for e in enemys:
 		remove_child(e)
-	new_level(pos, 9)
+	level_instance.queue_free()
+	new_level(pos, 99999)
 		
 	pause_menu = load("res://Pause menu.tscn")
 	menu_instance = pause_menu.instance()
@@ -61,17 +63,8 @@ func new_level(pos, checking):
 	for bullet in player_bullets:
 		player_bullets.erase(bullet)
 		bullet.queue_free()
-func play_music():
-	if not $AudioStreamPlayer2D.playing:
-		if not $Player.godmode or level == 9:
-			$AudioStreamPlayer2D.play()
-	if $Player.godmode or level == 9:
-		$AudioStreamPlayer2D.stop()
-		if not $Player/AudioStreamPlayer2D.playing:
-			$Player/AudioStreamPlayer2D.play()
-	else:
-		$Player/AudioStreamPlayer2D.stop()
-	$AudioStreamPlayer2D.position = $Player.position
+
+
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
