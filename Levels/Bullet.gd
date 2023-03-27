@@ -29,6 +29,7 @@ func _process(delta):
 				else:
 					get_parent().enemy_bullets.erase(self)
 				queue_free()
+
 		
 	if side == "enemy":
 		# Logic for specifcily enenmy bullets

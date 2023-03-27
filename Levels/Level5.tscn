@@ -567,6 +567,10 @@ visible = false
 position = Vector2( -78, -472 )
 scale = Vector2( 4, 1 )
 script = ExtResource( 7 )
+trans_data = {
+"level": 4,
+"position": Vector2( 4000, 500 )
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level portal2"]
 shape = SubResource( 85 )

@@ -127,7 +127,7 @@ position = Vector2( 30, -5 )
 shape = SubResource( 13 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.3
 
 [node name="Collision" type="Area2D" parent="."]
 
@@ -143,15 +143,18 @@ wait_time = 0.2
 stream = ExtResource( 12 )
 
 [node name="CoyoteWallJumpTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.4
 
 [node name="Wall jump cooldown" type="Timer" parent="."]
 wait_time = 0.1
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 30, 2 )
-scale = Vector2( 3.28037, 3.95982 )
+scale = Vector2( 20, 20 )
 texture = ExtResource( 3 )
+texture_scale = 1.66
+range_z_min = -4096
+range_z_max = 4096
 range_layer_min = -128
 range_layer_max = 1
 

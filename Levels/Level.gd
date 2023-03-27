@@ -51,7 +51,7 @@ func change_level(pos):
 func new_level(pos, checking):
 	$UI/ScreenFade/AnimationPlayer.play("screen fade")
 	$Player.position = pos
-	$Player.motion = Vector2(0, 0)
+	$Player.motion.x = 0
 	for i in range(checking):
 		if level == i+1:
 			if level > 1:
@@ -60,8 +60,7 @@ func new_level(pos, checking):
 			level1 = load(level_format % [level])
 			level_instance = level1.instance()
 			add_child(level_instance)
-	for bullet in player_bullets:
-		player_bullets.erase(bullet)
+	for bullet in get_tree().get_nodes_in_group("bullets"):
 		bullet.queue_free()
 
 

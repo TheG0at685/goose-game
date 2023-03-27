@@ -15,4 +15,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$MeshInstance2D.scale.x = length
+	$MeshInstance2D.position.x = length/2
+	$Item.position.x = length
 	rotation_degrees += spin_speed

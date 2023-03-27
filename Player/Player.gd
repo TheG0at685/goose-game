@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
-var SPEED=500
+var SPEED=600
 const GRAVITY=51
 const JUMP_SPEED=1200
 const JUMP_SUBLIMIT = 80
@@ -10,7 +10,7 @@ const WORLD_LIMIT=300000000000
 const MAX_BULLETS = 1
 const GUN_STRENGTH = 1.3
 const MAX_MOTION = Vector2(1000, 1500)
-const STOP_SPEED = 100
+const STOP_SPEED = 20
 const MAX_WALL_SLIDE_SPEED = 20
 var jump_count=0
 var wall_slide_speed=0
@@ -99,14 +99,13 @@ func god_mode():
 	can_fire = true
 	gun_shots = 10000
 	if Input.is_action_pressed("jump"):
-		position.y -= 10
+		position.y -= get_parent().get_node("UI/debug menu/Speed").value
 	if Input.is_action_pressed("down"):
-		position.y += 10
+		position.y += get_parent().get_node("UI/debug menu/Speed").value
 	if Input.is_action_pressed("right"):
-		position.x += 10
+		position.x += get_parent().get_node("UI/debug menu/Speed").value
 	if Input.is_action_pressed("left"):
-		position.x -= 10
-		get_parent().change_level(Vector2(0, 0))
+		position.x -= get_parent().get_node("UI/debug menu/Speed").value
 	health = 100
 		
 	
@@ -185,13 +184,13 @@ func movement(left,right):
 		right()
 	#this part makes player slide rather than stop instantly
 	elif motion.x>0 and is_on_floor():
-		motion.x = clamp(motion.x - STOP_SPEED, 0, SPEED)
+		motion.x = clamp(motion.x - STOP_SPEED, 0, SPEED/motion.x)
 	elif motion.x<0 and is_on_floor():
-		motion.x = clamp(motion.x + STOP_SPEED, -SPEED, 0)
+		motion.x = clamp(motion.x + STOP_SPEED, -SPEED/motion.x, 0)
 	
 	# Make the player slower when falling
 	if is_on_floor() or motion.y < -500:
-		SPEED = 500
+		SPEED = 600
 	else:
 		if SPEED > 400:
 			SPEED -= 20
@@ -204,7 +203,7 @@ func left():
 	if not wall_jumping:
 		$AnimatedSprite.flip_h = true
 		facing = "left"
-	# Dont use speedcap if the player has been launched by somthing
+	# Dont use speedcap if the player has been launched by somthing the gun
 	if motion.x <= -SPEED and motion.x > -SPEED-51:
 		motion.x = -SPEED
 	else:
@@ -222,7 +221,7 @@ func right():
 	if not wall_jumping:
 		$AnimatedSprite.flip_h = false
 		facing = "right"
-	# Dont use speedcap if the player has been launched by somthing
+	# Dont use speedcap if the player has been launched by the gun
 	if motion.x >= SPEED and motion.x < SPEED+51:
 		motion.x = SPEED
 	else:
@@ -395,9 +394,13 @@ func die():
 				health -= 15
 				Hurt()
 				
+	for danger in get_tree().get_nodes_in_group("dangers"):
+		if $Collision.overlaps_area(danger.get_node("Item")):
+			health = -1
+				
 
 			
-	if health < 0:
+	if health < 0 and not godmode:
 		get_parent().change_level(Vector2(0, 0))
 		health = 100
 		position = respawn

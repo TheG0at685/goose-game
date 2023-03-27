@@ -651,6 +651,16 @@ margin_right = 70.0
 margin_bottom = 48.0
 text = "Travel to"
 
+[node name="Speed" type="HSlider" parent="UI/debug menu"]
+margin_left = 7.0
+margin_top = 67.0
+margin_right = 225.0
+margin_bottom = 83.0
+min_value = 1.0
+max_value = 1000.0
+value = 1.0
+tick_count = 1000
+
 [node name="Time" type="RichTextLabel" parent="UI"]
 margin_left = 902.0
 margin_top = -1.0
@@ -747,7 +757,7 @@ cell_clip_uv = true
 format = 1
 
 [node name="CanvasModulate3" type="CanvasModulate" parent="ParallaxBackground2/Desert background2"]
-color = Color( 0.254902, 0.254902, 0.254902, 1 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="Sand" type="MeshInstance2D" parent="ParallaxBackground2"]
 modulate = Color( 1, 0.682353, 0.203922, 1 )
@@ -756,14 +766,14 @@ scale = Vector2( 2000, 10000 )
 mesh = SubResource( 8 )
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="ParallaxBackground2"]
-color = Color( 0.254902, 0.254902, 0.254902, 1 )
+color = Color( 0, 0, 0, 0 )
 
 [node name="Sky" type="CanvasLayer" parent="."]
 layer = -128
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Sky"]
 modulate = Color( 0.0117647, 0.313726, 0.419608, 1 )
-position = Vector2( -155, -7 )
+position = Vector2( -156, -7 )
 scale = Vector2( 5000, 5000 )
 mesh = SubResource( 9 )
 
@@ -803,7 +813,7 @@ stream = ExtResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 3, 3 )
 script = ExtResource( 18 )
 
 [node name="Area2D" type="Area2D" parent="Camera2D"]
@@ -813,7 +823,8 @@ position = Vector2( 1.14285, 0.599998 )
 shape = SubResource( 15 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.254902, 0.254902, 0.254902, 1 )
+z_index = -4096
+color = Color( 0, 0, 0, 1 )
 
 [connection signal="animation_finished" from="UI/ScreenFade/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="UI/debug menu/SpinBox/Button" to="." method="_on_Button_pressed"]
