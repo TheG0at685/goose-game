@@ -190,7 +190,7 @@ func movement(left,right):
 	
 	# Make the player slower when falling
 	if is_on_floor() or motion.y < -500:
-		SPEED = 600
+		SPEED = 500
 	else:
 		if SPEED > 400:
 			SPEED -= 20

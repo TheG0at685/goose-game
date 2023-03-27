@@ -22,14 +22,13 @@ func _ready():
 func _process(delta):
 	if not Engine.is_editor_hint():
 		for bullet in get_tree().get_nodes_in_group("bullets"):
-			print(get_tree().get_nodes_in_group("bullets"))
 			if $Area2D.overlaps_area(bullet.get_node("Collision")):
 				if delay > 0:
 					yield(get_tree().create_timer(delay),"timeout")
 				gravity_scale = 15
 				if not falling:
 					linear_velocity = Vector2(0, -1)
-				falling = true
+					falling = true
 		if fall_on_touch and $Area2D.overlaps_body(get_tree().current_scene.get_node("Player")):
 			if delay > 0:
 				yield(get_tree().create_timer(delay),"timeout")
