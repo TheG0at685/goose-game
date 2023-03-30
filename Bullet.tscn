@@ -14,7 +14,7 @@ gradient = SubResource( 7 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 5, 2 )
 
-[node name="Bullet" type="KinematicBody2D"]
+[node name="Bullet" type="KinematicBody2D" groups=["bullets"]]
 position = Vector2( 15, 0 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )

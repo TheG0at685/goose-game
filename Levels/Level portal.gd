@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export var trans_data = {"level": 2, "position": Vector2(0, 0)}
+export var trans_data = {"level": 4, "position": Vector2(0, 0)}
 
 
 # Called when the node enters the scene tree for the first time.
