@@ -1,15 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Levels/Moving saw.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Images/desert tile map (1).png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/desert tile map.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=41]
 
 [node name="Moving saw" type="KinematicBody2D" groups=["dangers"]]
-position = Vector2( 1201, 0 )
-rotation = 93.8986
+position = Vector2( 307, 0 )
 script = ExtResource( 1 )
-position1 = Vector2( 307, 0 )
 position2 = Vector2( 1500, 0 )
 
 [node name="Item" type="Area2D" parent="."]
