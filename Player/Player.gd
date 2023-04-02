@@ -88,7 +88,9 @@ func _physics_process(delta):
 	else:
 		gun()
 	die()
+
 	$AnimatedSprite/Gun_body.look_at(get_parent().get_node("Target").position)
+	
 
 func god_mode():
 	has_gun = true
@@ -285,6 +287,9 @@ func animate(left,right):
 	#animation codes are important because I use some of them to determine how player will act when we press a button
 	#some jump animations are in jump function
 	if is_working:
+		
+		if (not is_on_wall()) and $AnimatedSprite.animation == "wallslide":
+			$"wall slide timer".start()
 			
 		if motion.y < -51 and not is_on_wall():
 			if is_on_floor():
@@ -310,7 +315,7 @@ func animate(left,right):
 			elif facing=="right":
 				$AnimatedSprite.flip_h=false
 				$AnimatedSprite.play("default")
-		elif motion.y != 0  and is_on_wall():
+		elif motion.y > -500  and is_on_wall():
 			if motion.y > 51 or motion.y < -51:
 				if motion.x < 0:
 					$AnimatedSprite.play("wallslide")
@@ -454,3 +459,9 @@ func _on_Wall_jump_cooldown_timeout():
 	wall_jumping = false
 
 
+
+
+func _on_wall_slide_timer_timeout():
+	if (not is_on_wall()) and $AnimatedSprite.animation == "wallslide":
+		$AnimatedSprite.play("default")
+	

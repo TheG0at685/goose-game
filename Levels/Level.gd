@@ -66,10 +66,6 @@ func new_level(pos, checking):
 
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
-	pass
-
-
 func _on_Button_pressed():
 	level = int($"UI/debug menu/SpinBox".text)
 	change_level(Vector2(0, 0))

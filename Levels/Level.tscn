@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Images/cover.png" type="Texture" id=7]
 [ext_resource path="res://Levels/Cover.gd" type="Script" id=8]
 [ext_resource path="res://Levels/ParallaxBackground2.gd" type="Script" id=9]
-[ext_resource path="res://Assets/sounds/658266__matrixxx__retro-inspect-sound-ui-or-in-game-notification.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/sounds/83244__mlestn1__lasermachinegun.wav" type="AudioStream" id=10]
 [ext_resource path="res://Assets/Images/goose_idle (1).png" type="Texture" id=12]
 [ext_resource path="res://Assets/Images/castle tle2.png" type="Texture" id=13]
 [ext_resource path="res://Levels/Camera2D.gd" type="Script" id=18]
@@ -88,10 +88,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
 [sub_resource type="GDScript" id=12]
@@ -590,6 +590,7 @@ margin_bottom = 600.0
 color = Color( 0, 0, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ScreenFade"]
+playback_speed = 0.5
 anims/RESET = SubResource( 13 )
 "anims/screen fade" = SubResource( 14 )
 
@@ -813,7 +814,7 @@ stream = ExtResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 3, 3 )
+zoom = Vector2( 2, 2 )
 script = ExtResource( 18 )
 
 [node name="Area2D" type="Area2D" parent="Camera2D"]
@@ -824,7 +825,6 @@ shape = SubResource( 15 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 z_index = -4096
-color = Color( 0, 0, 0, 1 )
 
 [connection signal="animation_finished" from="UI/ScreenFade/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="UI/debug menu/SpinBox/Button" to="." method="_on_Button_pressed"]

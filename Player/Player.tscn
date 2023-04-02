@@ -22,11 +22,11 @@
 [ext_resource path="res://Assets/Images/goose_jump3 (1).png" type="Texture" id=20]
 [ext_resource path="res://Assets/Images/Goose arm.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Images/thought bubble2.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Images/goose_wallslide.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Images/thought bubble8.png" type="Texture" id=26]
 [ext_resource path="res://Assets/Images/thought bubble6.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Images/thought bubble4.png" type="Texture" id=31]
 [ext_resource path="res://Assets/Images/thought bubble5.png" type="Texture" id=36]
-[ext_resource path="res://Assets/Images/goose_jump8 (1).png" type="Texture" id=37]
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
@@ -63,7 +63,7 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 37 ) ],
+"frames": [ ExtResource( 23 ) ],
 "loop": true,
 "name": "wallslide",
 "speed": 5.0
@@ -141,6 +141,7 @@ wait_time = 0.2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
+pitch_scale = 0.01
 
 [node name="CoyoteWallJumpTimer" type="Timer" parent="."]
 wait_time = 0.4
@@ -158,9 +159,14 @@ range_z_max = 4096
 range_layer_min = -128
 range_layer_max = 1
 
+[node name="wall slide timer" type="Timer" parent="."]
+wait_time = 0.02
+one_shot = true
+
 [connection signal="animation_finished" from="Thought" to="." method="_on_Thought_animation_finished"]
 [connection signal="animation_finished" from="Thought" to="Thought" method="_on_Thought_animation_finished"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_CoyoteTimer_timeout"]
 [connection signal="timeout" from="damage cooldown" to="." method="_on_damage_cooldown_timeout"]
 [connection signal="timeout" from="CoyoteWallJumpTimer" to="." method="_on_CoyoteWallJumpTimer_timeout"]
 [connection signal="timeout" from="Wall jump cooldown" to="." method="_on_Wall_jump_cooldown_timeout"]
+[connection signal="timeout" from="wall slide timer" to="." method="_on_wall_slide_timer_timeout"]
