@@ -338,13 +338,16 @@ func animate(left,right):
 		
 		if $AnimatedSprite.flip_h:
 			$AnimatedSprite/Gun_body/Gun.flip_h=false
-			$AnimatedSprite/Gun_body/Gun.flip_v=false
-			$AnimatedSprite/Gun_body.position = Vector2(-70, 0)
+			$AnimatedSprite/Gun_body/Gun.flip_v=true
+		
+			$AnimatedSprite/Gun_body.position = Vector2(-130, -40)
+			$AnimatedSprite/Gun_body/Gun.position = Vector2(-25, 35)
 		else:
 			$AnimatedSprite/Gun_body/Gun.flip_h=false
-			$AnimatedSprite/Gun_body/Gun.flip_v=true
-			$AnimatedSprite/Gun_body.position = Vector2(70, 0)
-
+			$AnimatedSprite/Gun_body/Gun.flip_v=false
+			$AnimatedSprite/Gun_body.position = Vector2(104, -7)
+			$AnimatedSprite/Gun_body/Gun.position = Vector2(-1, -73)
+				
 func fire_gun(x, y):
 	# Causes the player to be launched directly away from x and y
 	if not is_on_floor() and motion.y > 0:
@@ -371,8 +374,9 @@ func create_bullet(type="normal"):
 		get_parent().add_child(bullet_instance)
 		bullet_instance.side = "player"
 		get_parent().player_bullets.append(bullet_instance)
-		bullet_instance.position = position
-		bullet_instance.look_at(get_parent().get_node("Target").position)
+		bullet_instance.position = position 
+		bullet_instance.position -= bullet_instance.transform.y * 10
+		bullet_instance.rotation_degrees = $AnimatedSprite/Gun_body.rotation_degrees
 		bullet_instance.rotation_degrees += 180 + rand_range(-5, 5)
 
 	

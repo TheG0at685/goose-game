@@ -15,8 +15,8 @@ gradient = SubResource( 7 )
 extents = Vector2( 5, 2 )
 
 [node name="Bullet" type="KinematicBody2D" groups=["bullets"]]
-position = Vector2( 15, 0 )
-scale = Vector2( 2, 2 )
+position = Vector2( 9.53674e-07, 0 )
+scale = Vector2( 5, 5 )
 script = ExtResource( 1 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]

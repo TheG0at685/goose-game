@@ -1,32 +1,22 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Assets/Images/goose_idle (1).png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/goose_wallslide (1).png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Levels/light.jpeg" type="Texture" id=3]
-[ext_resource path="res://Assets/Images/Goose gun.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Images/goose_walk_2.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Images/goose_walk_3goose_idle2costume2costume6goose_idle2costume2costume5.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Images/goose hand gun.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/goose_walk2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Images/goose_walk1.png" type="Texture" id=6]
 [ext_resource path="res://Player/Thought.gd" type="Script" id=7]
 [ext_resource path="res://Player/Gun_body.gd" type="Script" id=8]
-[ext_resource path="res://Assets/Images/goose_walk_4.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Images/goose_walk_1goose_idle2costume2costume3.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Images/goose_walk_5.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Images/goose hand.png" type="Texture" id=9]
 [ext_resource path="res://Assets/sounds/Goose god mode (1).mp3" type="AudioStream" id=12]
-[ext_resource path="res://Assets/Images/goose_jump7.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Images/goose_jump2 (1).png" type="Texture" id=14]
 [ext_resource path="res://Assets/Images/thought bubble3.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Images/goose_jump4 (1).png" type="Texture" id=16]
-[ext_resource path="res://Assets/Images/goose_jump1 (1).png" type="Texture" id=17]
-[ext_resource path="res://Assets/Images/goose_jump5 (1).png" type="Texture" id=18]
-[ext_resource path="res://Assets/Images/goose_jump6.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Images/goose_jump3 (1).png" type="Texture" id=20]
-[ext_resource path="res://Assets/Images/Goose arm.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Images/thought bubble2.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Images/goose_idle.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Images/thought bubble8.png" type="Texture" id=26]
 [ext_resource path="res://Assets/Images/thought bubble6.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Images/thought bubble4.png" type="Texture" id=31]
 [ext_resource path="res://Assets/Images/thought bubble5.png" type="Texture" id=36]
-[ext_resource path="res://Assets/Images/goose_jump8 (1).png" type="Texture" id=37]
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
@@ -43,27 +33,27 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 23 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 19 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 23 ) ],
 "loop": false,
 "name": "jump",
 "speed": 30.0
 }, {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 23 ) ],
 "loop": true,
 "name": "slide",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "walk",
-"speed": 5.0
+"speed": 1.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 37 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "wallslide",
 "speed": 5.0
@@ -71,7 +61,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ ExtResource( 21 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "No gun",
 "speed": 5.0
@@ -82,7 +72,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SphereMesh" id=10]
+[sub_resource type="SphereMesh" id=14]
+
+[sub_resource type="ImageTexture" id=15]
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 65, 150 )
@@ -103,24 +95,23 @@ playing = true
 script = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1, 1.12058 )
 frames = SubResource( 1 )
 
 [node name="Gun_body" type="KinematicBody2D" parent="AnimatedSprite"]
-position = Vector2( 67, -33 )
+show_behind_parent = true
+position = Vector2( 111, -18.7403 )
 script = ExtResource( 8 )
 
 [node name="Gun" type="AnimatedSprite" parent="AnimatedSprite/Gun_body"]
-position = Vector2( 50, -11 )
+position = Vector2( -1, -73.8457 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
 
-[node name="bullet pos" type="Node2D" parent="AnimatedSprite/Gun_body"]
-visible = false
-position = Vector2( 196, -39 )
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="AnimatedSprite/Gun_body/bullet pos"]
-position = Vector2( 1, 2 )
-scale = Vector2( 20.0221, 20 )
-mesh = SubResource( 10 )
+[node name="MeshInstance2D" type="MeshInstance2D" parent="AnimatedSprite/Gun_body"]
+scale = Vector2( 15, 15 )
+mesh = SubResource( 14 )
+texture = SubResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 30, -5 )

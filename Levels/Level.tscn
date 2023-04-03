@@ -10,7 +10,7 @@
 [ext_resource path="res://Levels/Cover.gd" type="Script" id=8]
 [ext_resource path="res://Levels/ParallaxBackground2.gd" type="Script" id=9]
 [ext_resource path="res://Assets/sounds/658266__matrixxx__retro-inspect-sound-ui-or-in-game-notification.wav" type="AudioStream" id=10]
-[ext_resource path="res://Assets/Images/goose_idle (1).png" type="Texture" id=12]
+[ext_resource path="res://Assets/Images/goose_idle.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Images/castle tle2.png" type="Texture" id=13]
 [ext_resource path="res://Levels/Camera2D.gd" type="Script" id=18]
 

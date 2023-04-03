@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var velocity = Vector2()
-var speed = 500
+var speed = 1500
 
 # determines if it is the player or the enemy bullet
 var side
@@ -17,7 +17,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	velocity = Vector2()
-	velocity = Vector2(-speed, 0).rotated(rotation)
+	velocity -= transform.x * speed
 	velocity = move_and_slide(velocity)
 	
 	for tilemap in get_tree().current_scene.level_instance.get_children():
@@ -47,7 +47,7 @@ func _process(delta):
 			scale = Vector2(100, 100)
 			speed = 2500
 		else:
-			scale = Vector2(2, 2)
+			scale = Vector2(5, 5)
 			speed = 500
 				
 	# Get rid of the bullet if it's to far away to prevent lag
