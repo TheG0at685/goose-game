@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/83244__mlestn1__lasermachinegun.wav-ab312ceec1074ca9774f90a13275136a.sample"
+valid=false
 
 [deps]
 
 source_file="res://Assets/sounds/83244__mlestn1__lasermachinegun.wav"
-dest_files=[ "res://.import/83244__mlestn1__lasermachinegun.wav-ab312ceec1074ca9774f90a13275136a.sample" ]
-
 [params]
 
 force/8_bit=false
