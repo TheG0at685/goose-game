@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var velocity = Vector2()
-var speed = 500
+var speed = 1500
 
 # determines if it is the player or the enemy bullet
 var side
@@ -17,16 +17,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	velocity = Vector2()
-	velocity = Vector2(-speed, 0).rotated(rotation)
+	velocity -= transform.x * speed
 	velocity = move_and_slide(velocity)
 	
-	if $Collision.overlaps_body(get_parent().get_node("Player").current_level.get_node("TileMap")):
-		# If touching the map delete the instance and its object in the level array
-		if side == "player":
-			get_parent().player_bullets.erase(self)
-		else:
-			get_parent().enemy_bullets.erase(self)
-		queue_free()
+	for tilemap in get_tree().current_scene.level_instance.get_children():
+		if "TileMap" in str(tilemap):
+			if $Collision.overlaps_body(tilemap):
+				# If touching the map delete the instance and its object in the level array
+				if side == "player":
+					get_parent().player_bullets.erase(self)
+				else:
+					get_parent().enemy_bullets.erase(self)
+				queue_free()
+
 		
 	if side == "enemy":
 		# Logic for specifcily enenmy bullets
@@ -44,7 +47,7 @@ func _process(delta):
 			scale = Vector2(100, 100)
 			speed = 2500
 		else:
-			scale = Vector2(2, 2)
+			scale = Vector2(5, 5)
 			speed = 500
 				
 	# Get rid of the bullet if it's to far away to prevent lag
