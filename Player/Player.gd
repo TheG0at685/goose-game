@@ -337,19 +337,31 @@ func animate(left,right):
 				$AnimatedSprite.play("slide")
 		
 		if $AnimatedSprite.flip_h:
-			$AnimatedSprite/Gun_body/Gun.flip_h=false
-			$AnimatedSprite/Gun_body/Gun.flip_v=true
-		
-			$AnimatedSprite/Gun_body.position = Vector2(-130, -40)
-			$AnimatedSprite/Gun_body/Gun.position = Vector2(-25, 35)
+			if has_gun:
+				$AnimatedSprite/Gun_body/Gun.flip_h=false
+				$AnimatedSprite/Gun_body/Gun.flip_v=true
+				$AnimatedSprite/Gun_body.position = Vector2(-130, -40)
+				$AnimatedSprite/Gun_body/Gun.position = Vector2(-25, 35)
+			else:
+				$AnimatedSprite/Gun_body/Gun.flip_h=false
+				$AnimatedSprite/Gun_body/Gun.flip_v=true
+				$AnimatedSprite/Gun_body.position = Vector2(-107, -11)
+				$AnimatedSprite/Gun_body/Gun.position = Vector2(63, 0)
 		else:
-			$AnimatedSprite/Gun_body/Gun.flip_h=false
-			$AnimatedSprite/Gun_body/Gun.flip_v=false
-			$AnimatedSprite/Gun_body.position = Vector2(104, -7)
-			$AnimatedSprite/Gun_body/Gun.position = Vector2(-1, -73)
+			if has_gun:
+				$AnimatedSprite/Gun_body/Gun.flip_h=false
+				$AnimatedSprite/Gun_body/Gun.flip_v=false
+				$AnimatedSprite/Gun_body.position = Vector2(104, -7)
+				$AnimatedSprite/Gun_body/Gun.position = Vector2(-1, -73)
+			else:
+				$AnimatedSprite/Gun_body/Gun.flip_h=false
+				$AnimatedSprite/Gun_body/Gun.flip_v=false
+				$AnimatedSprite/Gun_body.position = Vector2(104, -11)
+				$AnimatedSprite/Gun_body/Gun.position = Vector2(64, 0)
 				
 func fire_gun(x, y):
 	# Causes the player to be launched directly away from x and y
+	
 	if not is_on_floor() and motion.y > 0:
 		motion.y = -10
 	if not is_on_floor():
@@ -457,4 +469,14 @@ func flip_player():
 func _on_Wall_jump_cooldown_timeout():
 	wall_jumping = false
 
+func get_mouse_direction(player_pos: Vector2) -> Vector2:
+	# gets the mouse direction reletive to the player
+	if not "Xbox One Controller" == Input.get_joy_name(0):
+		var mouse_pos = get_global_mouse_position()
+		var delta = mouse_pos - player_pos
+		var direction = delta.normalized()
+		return direction
+	else:
+		var direction = Vector2(Input.get_joy_axis(0, JOY_AXIS_2), Input.get_joy_axis(0, JOY_AXIS_3)).normalized()
+		return direction
 

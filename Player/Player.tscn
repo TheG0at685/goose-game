@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/Images/goose_wallslide (1).png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -72,10 +72,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SphereMesh" id=14]
-
-[sub_resource type="ImageTexture" id=15]
-
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 65, 150 )
 
@@ -100,18 +96,14 @@ frames = SubResource( 1 )
 
 [node name="Gun_body" type="KinematicBody2D" parent="AnimatedSprite"]
 show_behind_parent = true
-position = Vector2( 111, -18.7403 )
+position = Vector2( 104, -16.0631 )
 script = ExtResource( 8 )
 
 [node name="Gun" type="AnimatedSprite" parent="AnimatedSprite/Gun_body"]
-position = Vector2( -1, -73.8457 )
+position = Vector2( 64, 2.67719 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="AnimatedSprite/Gun_body"]
-scale = Vector2( 15, 15 )
-mesh = SubResource( 14 )
-texture = SubResource( 15 )
+animation = "No gun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 30, -5 )
