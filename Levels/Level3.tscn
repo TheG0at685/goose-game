@@ -5,7 +5,7 @@
 [ext_resource path="res://Cutscene trigger.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/OnOff tiles.gd" type="Script" id=4]
 [ext_resource path="res://Falling object.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Cutscene trigger.gd" type="Script" id=6]
+[ext_resource path="res://Levels/Level3.gd" type="Script" id=6]
 [ext_resource path="res://Levels/Level portal.gd" type="Script" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
@@ -484,6 +484,7 @@ glow_strength = 0.95
 glow_blend_mode = 0
 
 [node name="Level3" type="KinematicBody2D"]
+script = ExtResource( 6 )
 
 [node name="Danger" type="TileMap" parent="." groups=["dangers"]]
 tile_set = SubResource( 5 )
@@ -522,7 +523,6 @@ format = 1
 
 [node name="Tutorial trigger" parent="." instance=ExtResource( 3 )]
 position = Vector2( 3217, 347 )
-script = ExtResource( 6 )
 
 [node name="Level portal" type="Area2D" parent="." groups=["level portals"]]
 visible = false
@@ -567,77 +567,66 @@ environment = SubResource( 87 )
 
 [node name="Falling object" parent="." instance=ExtResource( 5 )]
 position = Vector2( 287, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 491, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 695, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 899, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1307, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1511, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object7" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1713, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object8" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2121, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object9" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2325, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object10" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2529, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5
 
 [node name="Falling object11" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2733, 681 )
-gravity_scale = 0.0
 fall_on_touch = true
 collision_size = Vector2( 1, 2 )
 delay = 0.5

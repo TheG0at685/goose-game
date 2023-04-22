@@ -13,7 +13,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if not animation == "default":
+		$ColorRect.visible = true
+	else:
+		$ColorRect.visible = false
 
 	
 

@@ -56,6 +56,7 @@ func _physics_process(delta):
 	motion.y = clamp(motion.y, -MAX_MOTION.y, MAX_MOTION.y)
 	bounce()
 	move_and_slide(motion, UP, false, 4, 0.785398, false)
+	print(is_on_wall())
 	up_collision()
 	side_collision()
 	if not paused:
