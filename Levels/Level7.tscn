@@ -536,6 +536,7 @@ cell_clip_uv = true
 format = 1
 
 [node name="Level portal" type="Area2D" parent="." groups=["level portals"]]
+visible = false
 position = Vector2( -3619, 306 )
 scale = Vector2( 1, 4 )
 script = ExtResource( 7 )

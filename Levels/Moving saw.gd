@@ -9,7 +9,6 @@ export var position2 = Vector2()
 var destination = 2
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position1 = position
 	moving = true
 
 

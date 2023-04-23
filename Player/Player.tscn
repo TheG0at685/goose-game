@@ -85,7 +85,7 @@ script = ExtResource( 2 )
 
 [node name="Thought" type="AnimatedSprite" parent="."]
 pause_mode = 2
-position = Vector2( -166.805, -558.937 )
+position = Vector2( 28, 1766 )
 scale = Vector2( 12, 12 )
 z_index = 1000
 frames = SubResource( 12 )
@@ -148,7 +148,7 @@ texture = ExtResource( 3 )
 texture_scale = 1.66
 range_z_min = -4096
 range_z_max = 4096
-range_layer_min = -128
+range_layer_min = -1
 range_layer_max = 1
 
 [connection signal="animation_finished" from="Thought" to="." method="_on_Thought_animation_finished"]
