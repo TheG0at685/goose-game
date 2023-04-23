@@ -57,7 +57,7 @@ func _physics_process(delta):
 	bounce()
 	move_and_slide(motion, UP, false, 4, 0.785398, false)
 	up_collision()
-	side_collision()
+	#side_collision()
 	if not paused:
 		movement(left,right)
 		jumping(jump,left,right)
@@ -159,6 +159,7 @@ func side_collision():
 		elif not $AnimatedSprite.flip_h:
 			motion.x = 0
 	
+	
 			
 			
 			
@@ -167,8 +168,7 @@ func apply_gravity():
 		jump_count=max_jump_count
 		motion.y=1
 	elif is_on_wall() and not is_on_floor() and Input.is_action_pressed("wall hold"):
-		if motion.y > 0:
-			motion.y = 0
+		motion.y += GRAVITY/2
 			
 	else:
 		motion.y+=GRAVITY
