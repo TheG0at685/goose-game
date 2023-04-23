@@ -28,3 +28,4 @@ func _process(delta):
 		if not get_tree().current_scene.menu_instance.paused:
 			get_tree().paused = false
 	
+
