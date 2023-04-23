@@ -15,7 +15,7 @@ var menu_instance = pause_menu.instance()
 
 # The closer it is to 0, the faster it will run
 var run_speed = 0
-var current_song = "Goose theme.mp3"
+var current_song = null
 
 
 
@@ -28,7 +28,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	play()
 
 func change_level(pos):
 	# Reset the scrolling background
@@ -80,3 +80,10 @@ func time_slow():
 			run_speed += 0.005
 	else:
 		run_speed = 0
+		
+func play():
+	if not current_song == null and not $Player/AudioStreamPlayer2D.stream == load(current_song):	
+		$Player/AudioStreamPlayer2D.stream = load(current_song)
+		$Player/AudioStreamPlayer2D.playing = true 
+
+		

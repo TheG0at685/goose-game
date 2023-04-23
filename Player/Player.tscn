@@ -120,7 +120,7 @@ position = Vector2( 30, -5 )
 shape = SubResource( 13 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.2
 
 [node name="Collision" type="Area2D" parent="."]
 

@@ -15,3 +15,5 @@ func _process(delta):
 		$Default.visible = false
 		$Taken.visible = true
 		get_parent().get_node("Falling object").fall()
+		# Trigger music
+		get_tree().current_scene.current_song = "res://Assets/sounds/Temple escape.wav"

@@ -172,7 +172,8 @@ func apply_gravity():
 			
 	else:
 		motion.y+=GRAVITY
-		can_jump = false
+		
+	
 	
 func movement(left,right):
 		
@@ -236,15 +237,18 @@ func jumping(jump,left,right):
 	if jump_count > 0:
 		if (jump_count == max_jump_count and is_on_floor()) or jump_count < max_jump_count:
 			can_jump = true
+			
 	if Input.is_action_just_pressed(jump) or earlyjump:
 		#earlyjump variable here is makes sure player jumps even if we press slightly early
-			if is_on_floor() or can_jump:
+			if is_on_floor() or can_jump and jump_count > 0:
 				$AnimatedSprite.stop()
 				$AnimatedSprite.frame = 0
 				$AnimatedSprite.play("jump")
 				
 				motion.y = -JUMP_SPEED
 				jump_count-=1
+	
+		
 				
 				# Being able to jump gaurentees that the player is on the ground
 				gun_shots = MAX_BULLETS
@@ -275,6 +279,7 @@ func coyote_jump():
 		can_jump = true
 		
 		$CoyoteTimer.start()
+	
 
 func _on_CoyoteTimer_timeout():
 	can_jump = false
