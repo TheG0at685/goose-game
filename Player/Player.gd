@@ -57,7 +57,7 @@ func _physics_process(delta):
 	bounce()
 	move_and_slide(motion, UP, false, 4, 0.785398, false)
 	up_collision()
-	#side_collision()
+	side_collision()
 	if not paused:
 		movement(left,right)
 		jumping(jump,left,right)
@@ -153,7 +153,7 @@ func up_collision():
 		
 func side_collision():
 	#this function makes player stick to wall, also it stops player running animations when it hits a wall
-	if is_on_wall() and not is_on_floor():
+	if is_on_wall() and not is_on_floor() and not Input.is_action_pressed("wall hold"):
 		if $AnimatedSprite.flip_h:
 			motion.x = 0
 		elif not $AnimatedSprite.flip_h:
