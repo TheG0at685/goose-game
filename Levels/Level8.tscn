@@ -275,7 +275,7 @@ extents = Vector2( 25.5, 55 )
 [sub_resource type="QuadMesh" id=86]
 
 [sub_resource type="CircleShape2D" id=93]
-radius = 260.231
+radius = 665.832
 
 [node name="Level1" type="KinematicBody2D"]
 script = ExtResource( 10 )
@@ -380,6 +380,7 @@ region_enabled = true
 region_rect = Rect2( 89, 1, 50, 50 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gem stand"]
+position = Vector2( -254, 24 )
 shape = SubResource( 93 )
 
 [node name="Falling object" parent="." instance=ExtResource( 6 )]

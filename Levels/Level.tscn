@@ -590,6 +590,7 @@ margin_bottom = 600.0
 color = Color( 0, 0, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ScreenFade"]
+playback_speed = 0.5
 anims/RESET = SubResource( 13 )
 "anims/screen fade" = SubResource( 14 )
 
