@@ -40,6 +40,8 @@ var paused = false
 var max_jump = 1 
 var wall_jumping = false
 var wall=null
+var enter_wall_slide_direction 
+
 
 
 
@@ -168,7 +170,10 @@ func apply_gravity():
 		jump_count=max_jump_count
 		motion.y=1
 	elif is_on_wall() and not is_on_floor() and Input.is_action_pressed("wall hold"):
-		motion.y += GRAVITY/2
+		if motion.y < MAX_WALL_SLIDE_SPEED:
+			motion.y += GRAVITY/2
+		else:
+			motion.y = MAX_WALL_SLIDE_SPEED
 			
 	else:
 		motion.y+=GRAVITY

@@ -74,8 +74,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 65, 150 )
+[sub_resource type="CapsuleShape2D" id=13]
+radius = 145.0
+height = 66.0
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 113.548, 169.535 )
@@ -116,7 +117,7 @@ frames = SubResource( 8 )
 animation = "No gun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 30, -5 )
+position = Vector2( 10, 4 )
 shape = SubResource( 13 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
