@@ -349,7 +349,7 @@ scale = Vector2( 1, 4 )
 script = ExtResource( 7 )
 trans_data = {
 "level": 7,
-"position": Vector2( 2100, 100 )
+"position": Vector2( 0, 0 )
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level portal2"]
