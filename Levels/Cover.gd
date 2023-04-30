@@ -5,6 +5,7 @@ var can_show = true
 func _ready():
 	get_tree().paused = true
 	visible = true
+	get_parent().current_song = "res://Assets/sounds/The Amazing Goose Game Main Theme(AKA Balled of the Goose).wav"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,6 +21,7 @@ func _process(delta):
 
 
 func _on_Button_pressed():
+	get_parent().pause_mode = Node.PAUSE_MODE_INHERIT
 	$AudioStreamPlayer2D.play()
 	get_tree().paused = false
 	visible = false

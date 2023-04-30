@@ -21,6 +21,7 @@ var current_song = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	new_level(Vector2(0, 0), level)
 	add_child(menu_instance)
 
@@ -82,7 +83,10 @@ func time_slow():
 		run_speed = 0
 		
 func play():
-	if not current_song == null and not $Player/AudioStreamPlayer2D.stream == load(current_song):	
+	if not $Player/AudioStreamPlayer2D.playing:
+		$Player/AudioStreamPlayer2D.stream = load(current_song)
+		$Player/AudioStreamPlayer2D.play()
+	if not $Player/AudioStreamPlayer2D.stream == load(current_song):	
 		$Player/AudioStreamPlayer2D.stream = load(current_song)
 		$Player/AudioStreamPlayer2D.playing = true 
 

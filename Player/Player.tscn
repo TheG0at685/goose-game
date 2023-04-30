@@ -126,6 +126,7 @@ shape = SubResource( 3 )
 wait_time = 0.2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
 stream = ExtResource( 12 )
 
 [node name="CoyoteWallJumpTimer" type="Timer" parent="."]
