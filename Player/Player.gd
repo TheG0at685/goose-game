@@ -108,6 +108,10 @@ func god_mode():
 		position.x += get_parent().get_node("UI/debug menu/Speed").value
 	if Input.is_action_pressed("left"):
 		position.x -= get_parent().get_node("UI/debug menu/Speed").value
+	if Input.is_action_just_pressed("summon_toast"):
+		var new_toast = load("res://Toast.tscn").instance()
+		get_parent().add_child(new_toast)
+		new_toast.position = position
 	health = 100
 		
 	
@@ -412,11 +416,9 @@ func die():
 		if $Collision.overlaps_area(bullet.get_node("Collision")):
 			health -= 15
 			
-	for enemy in get_parent().enemys:
-		if $Collision.overlaps_area(enemy.get_node("Collision")):
-			if not hurt:
-				health -= 15
-				Hurt()
+	for enemy in get_tree().get_nodes_in_group("enemys"):
+		if $Collision.overlaps_body(enemy):
+			health = -1
 				
 	for danger in get_tree().get_nodes_in_group("dangers"):
 		if $Collision.overlaps_area(danger.get_node("Item")):

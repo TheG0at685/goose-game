@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/Toast.gd" type="Script" id=1]
+
+[sub_resource type="QuadMesh" id=88]
+
+[sub_resource type="RectangleShape2D" id=89]
+
+[sub_resource type="RectangleShape2D" id=90]
+extents = Vector2( 299.3, 75.1 )
+
+[sub_resource type="RectangleShape2D" id=91]
+extents = Vector2( 10.8, 10.5 )
+
+[node name="Toast" type="KinematicBody2D"]
+position = Vector2( 192, -3155 )
+scale = Vector2( 5, 5 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2( 20, 20 )
+mesh = SubResource( 88 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 89 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.500023, -65.1001 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 90 )
+
+[node name="Collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 0, -0.100098 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 91 )

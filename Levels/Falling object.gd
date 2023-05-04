@@ -56,6 +56,11 @@ func _process(delta):
 			get_tree().current_scene.get_node("Player").health = -1
 			get_tree().current_scene.get_node("Player").die()
 			
+		for enemy in get_tree().get_nodes_in_group("enemys"):
+			print(enemy)
+			if $Bottom.overlaps_body(enemy):
+				enemy.health = -1
+				
 		if not camera_shook:
 			$Bottom/Particles2D.emitting = true
 		else:
