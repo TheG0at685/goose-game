@@ -55,7 +55,8 @@ func _physics_process(delta):
 	# These funtions trigger every frame for movment, animation, etc 
 	apply_gravity()
 	motion.x = clamp(motion.x, -MAX_MOTION.x, MAX_MOTION.x)
-	motion.y = clamp(motion.y, -MAX_MOTION.y, MAX_MOTION.y)
+	if not gun_shots<MAX_BULLETS:
+		motion.y = clamp(motion.y, -MAX_MOTION.y, MAX_MOTION.y)
 	bounce()
 	move_and_slide(motion, UP, false, 4, 0.785398, false)
 	up_collision()
@@ -374,13 +375,9 @@ func animate(left,right):
 func fire_gun(x, y):
 	# Causes the player to be launched directly away from x and y
 	
-	if not is_on_floor() and motion.y > 0:
-		motion.y = -10
-	if not is_on_floor():
-		if y > position.y:
-			motion.y -= clamp((y - position.y) * 6, 0, 1000) * GUN_STRENGTH
-			motion.y -= GRAVITY
-		motion.x += clamp(position.x - x, -600, 600) * GUN_STRENGTH
+	motion.y -= clamp((y - position.y) * 6, -1000, 1000) * GUN_STRENGTH
+	motion.y -= GRAVITY
+	motion.x += clamp(position.x - x, -600, 600) * GUN_STRENGTH
 	create_bullet()
 	
 		
@@ -457,8 +454,11 @@ func Hurt():
 func bounce():
 	for bounce in get_tree().get_nodes_in_group("bounceys"):
 		if $Collision.overlaps_area(bounce.get_node("Area2D")):
-			motion.y = 0
-			motion += bounce.transform.x * SPEED * bounce.power
+			if bounce.transform.x * SPEED * bounce.power * Vector2(motion.x, motion.y)/800 > bounce.transform.x * SPEED * bounce.power:
+				motion += bounce.transform.x * SPEED * bounce.power * Vector2(abs(motion.x), abs(motion.y))/800
+			else:
+				motion += bounce.transform.x * SPEED * bounce.power
+			motion.y = clamp(motion.y, -35000, 0)
 			bounce.get_node("AnimationPlayer").play("bounce")
 			gun_shots = MAX_BULLETS
 	

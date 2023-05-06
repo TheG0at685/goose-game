@@ -578,7 +578,6 @@ mesh = SubResource( 3 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 128
-visible = false
 script = ExtResource( 1 )
 
 [node name="Cutscene player" type="VideoPlayer" parent="UI"]
@@ -586,6 +585,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="ScreenFade" type="ColorRect" parent="UI"]
+visible = false
 margin_right = 1026.0
 margin_bottom = 600.0
 color = Color( 0, 0, 0, 0 )
@@ -776,7 +776,7 @@ layer = -128
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Sky"]
 modulate = Color( 0.0117647, 0.313726, 0.419608, 1 )
-position = Vector2( -156, -7 )
+position = Vector2( 252, 204 )
 scale = Vector2( 5000, 5000 )
 mesh = SubResource( 9 )
 
@@ -815,6 +815,7 @@ text = "Play"
 stream = ExtResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
 current = true
 zoom = Vector2( 3, 3 )
 script = ExtResource( 18 )

@@ -586,7 +586,7 @@ mesh = SubResource( 86 )
 environment = SubResource( 87 )
 
 [node name="Cutscene trigger" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1954, 20 )
-scale = Vector2( 1, 4 )
+position = Vector2( 1936, -451 )
+scale = Vector2( 1, 2 )
 play = "Wall hold"
 release_input = "wall hold"

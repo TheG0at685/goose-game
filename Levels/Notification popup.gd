@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Control
 
 
 # Declare member variables here. Examples:
@@ -8,11 +8,17 @@ extends KinematicBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_queued_for_deletion():
-		for child in get_children():
-			child.queue_free()
+	if Input.is_action_just_released("ui_accept") and visible:
+		visible = false
+		get_tree().paused = false
+
+func popup(text):
+	visible = true
+	get_tree().paused = true
+	$RichTextLabel2.text = text
+	

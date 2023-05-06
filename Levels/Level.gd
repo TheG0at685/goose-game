@@ -50,7 +50,7 @@ func change_level(pos):
 	add_child(menu_instance)
 		
 func new_level(pos, checking):
-	$UI/ScreenFade/AnimationPlayer.play("screen fade")
+	#$UI/ScreenFade/AnimationPlayer.play("screen fade")
 	$Player.position = pos
 	$Player.motion.x = 0
 	for i in range(checking):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Levels/temple blocks.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Images/spike.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/temple_tilesetcostume1.png" type="Texture" id=3]
 [ext_resource path="res://Levels/OnOff tiles.gd" type="Script" id=4]
 [ext_resource path="res://Levels/Moving saw.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Falling object.tscn" type="PackedScene" id=6]
@@ -499,6 +500,56 @@ extents = Vector2( 25.5, 55 )
 
 [sub_resource type="QuadMesh" id=86]
 
+[sub_resource type="ConvexPolygonShape2D" id=90]
+points = PoolVector2Array( 0, 0, 97, 0, 97, 55, 0, 55 )
+
+[sub_resource type="ConvexPolygonShape2D" id=91]
+points = PoolVector2Array( 0, 0, 97, 0, 97, 55, 0, 55 )
+
+[sub_resource type="TileSet" id=92]
+0/name = "temple_tilesetcostume1.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 131, 33, 97, 55 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 90 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 90 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "temple_tilesetcostume1.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 131, 141, 97, 55 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 91 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 91 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
 [node name="Level1" type="KinematicBody2D"]
 
 [node name="Danger" type="TileMap" parent="." groups=["dangers"]]
@@ -537,7 +588,7 @@ format = 1
 
 [node name="Level portal" type="Area2D" parent="." groups=["level portals"]]
 visible = false
-position = Vector2( -3619, 306 )
+position = Vector2( -7517, 295 )
 scale = Vector2( 1, 4 )
 script = ExtResource( 7 )
 trans_data = {
@@ -580,6 +631,7 @@ delay = 3.0
 
 [node name="Falling object2" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1977, 63 )
+fall_on_touch = true
 
 [node name="Moving saw" parent="." instance=ExtResource( 5 )]
 position = Vector2( -756, 880 )
@@ -594,3 +646,10 @@ rotation = -0.349182
 speed = 10
 position1 = Vector2( -1575, 820 )
 position2 = Vector2( -1575, 0 )
+
+[node name="TileMap4" type="TileMap" parent="."]
+position = Vector2( -44, -27 )
+tile_set = SubResource( 92 )
+cell_size = Vector2( 96, 50 )
+format = 1
+tile_data = PoolIntArray( 196530, 0, 0, 196531, 0, 0, 196532, 0, 0, 196533, 0, 0, 196534, 0, 0, 196535, 0, 0, 196536, 0, 0, 196537, 0, 0, 196538, 0, 0, 196539, 0, 0, 196540, 0, 0, 196541, 0, 0, 196542, 0, 0, 196543, 0, 0, 196544, 0, 0, 196545, 0, 0, 196546, 0, 0, 196547, 0, 0, 327521, 0, 0, 327522, 0, 0, 327523, 0, 0, 327524, 0, 0, 327525, 0, 0, 327526, 0, 0, 327527, 0, 0, 327528, 0, 0, 327529, 0, 0, 327530, 0, 0, 327531, 0, 0, 327532, 0, 0, 327533, 0, 0, 327534, 0, 0, 327535, 0, 0, 327536, 0, 0, 327537, 0, 0, 327538, 0, 0, 327539, 0, 0, 327540, 0, 0, 327541, 0, 0, 327542, 0, 0, 327543, 0, 0, 327544, 0, 0, 327545, 0, 0, 327546, 0, 0, 327547, 0, 0, 327548, 0, 0, 327549, 0, 0, 393075, 1, 0, 393083, 1, 0, 458611, 1, 0, 458619, 1, 0, 524147, 1, 0, 524155, 1, 0, 589683, 1, 0, 589691, 1, 0, 655219, 1, 0, 655227, 1, 0, 720755, 1, 0, 720763, 1, 0, 720790, 0, 0, 720791, 0, 0, 720792, 0, 0, 720793, 0, 0, 720794, 0, 0, 720795, 0, 0, 720796, 0, 0, 720797, 0, 0, 720798, 0, 0, 720799, 0, 0, 720800, 0, 0, 720801, 0, 0, 720802, 0, 0, 720803, 0, 0, 720804, 0, 0, 720805, 0, 0, 720806, 0, 0, 720807, 0, 0, 720808, 0, 0, 720809, 0, 0, 720810, 0, 0, 720811, 0, 0, 720812, 0, 0, 720813, 0, 0, 720814, 0, 0, 720815, 0, 0, 720816, 0, 0, 720817, 0, 0, 720818, 0, 0, 720819, 0, 0, 720820, 0, 0, 720821, 0, 0, 720822, 0, 0, 720823, 0, 0, 720824, 0, 0, 720825, 0, 0, 720826, 0, 0, 720827, 0, 0, 720828, 0, 0, 720829, 0, 0, 720830, 0, 0, 720831, 0, 0, 720832, 0, 0, 720833, 0, 0, 720834, 0, 0, 720835, 0, 0, 786291, 1, 0, 786299, 1, 0, 851827, 1, 0, 851835, 1, 0, 917363, 1, 0, 917371, 1, 0, 917397, 0, 0, 917398, 0, 0, 917399, 0, 0, 917400, 0, 0, 982899, 1, 0, 982907, 1, 0, 982930, 0, 0, 982931, 0, 0, 982932, 0, 0, 1048435, 1, 0, 1048443, 1, 0, 1113971, 1, 0, 1113979, 1, 0, 1179507, 1, 0, 1179515, 1, 0, 1245043, 1, 0, 1245051, 1, 0, 1310579, 1, 0, 1310587, 1, 0, 1376115, 1, 0, 1376123, 1, 0, 1441651, 1, 0, 1441659, 1, 0, 1507187, 1, 0, 1507195, 1, 0, 1572723, 1, 0, 1572731, 1, 0, 1638259, 1, 0, 1638267, 1, 0, 1703795, 1, 0, 1703803, 1, 0, 1769331, 1, 0, 1769339, 1, 0, 1834867, 1, 0, 1834875, 1, 0, 1900403, 1, 0, 1900411, 1, 0, 1965939, 1, 0, 1965947, 1, 0, 2031475, 1, 0, 2031483, 1, 0, 2097011, 1, 0, 2097019, 1, 0, 2162547, 1, 0, 2162555, 1, 0, 2228083, 1, 0, 2228091, 1, 0, 2293619, 1, 0, 2293627, 1, 0, 2359155, 1, 0, 2359163, 1, 0, 2424691, 1, 0, 2424699, 1, 0, 2490227, 1, 0, 2490235, 1, 0, 2555763, 1, 0, 2555771, 1, 0, 2621299, 1, 0, 2621307, 1, 0, 2686835, 1, 0, 2686843, 1, 0, 2752371, 1, 0, 2752379, 1, 0, 2817907, 1, 0, 2817915, 1, 0, 2883443, 1, 0, 2883451, 1, 0, 2948979, 1, 0, 2948987, 1, 0, 3014515, 1, 0, 3014523, 1, 0, 3080051, 1, 0, 3080059, 1, 0, 3145587, 1, 0, 3145595, 1, 0, 3211123, 1, 0, 3211131, 1, 0, 3276659, 1, 0, 3276667, 1, 0, 3342195, 1, 0, 3342203, 1, 0, 3407731, 1, 0, 3407739, 1, 0, 3473267, 1, 0, 3473275, 1, 0, 3538803, 1, 0, 3538811, 1, 0, 3604339, 1, 0, 3604347, 1, 0, 3669875, 1, 0, 3669883, 1, 0, 3735411, 1, 0, 3735419, 1, 0, 3800947, 1, 0, 3800955, 1, 0, 3866483, 1, 0, 3866491, 1, 0, 3932019, 1, 0, 3932027, 1, 0, 3997555, 1, 0, 3997563, 1, 0, 4063091, 1, 0, 4063099, 1, 0, 4128635, 1, 0, 4194171, 1, 0, 4259707, 1, 0, 4325243, 1, 0 )
