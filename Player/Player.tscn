@@ -149,7 +149,6 @@ range_layer_max = 1
 polygon = PoolVector2Array( -60, 174, 36, 175, 107, -53, 107, -173, 34, -174, 1, -39, -117, -39, -130, 92 )
 
 [connection signal="animation_finished" from="Thought" to="." method="_on_Thought_animation_finished"]
-[connection signal="animation_finished" from="Thought" to="Thought" method="_on_Thought_animation_finished"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_CoyoteTimer_timeout"]
 [connection signal="timeout" from="damage cooldown" to="." method="_on_damage_cooldown_timeout"]
 [connection signal="timeout" from="CoyoteWallJumpTimer" to="." method="_on_CoyoteWallJumpTimer_timeout"]

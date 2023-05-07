@@ -9,7 +9,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if can_show:
 		if $Sprite.modulate.a8 < 200:
 			$Sprite.modulate.a8 += 1

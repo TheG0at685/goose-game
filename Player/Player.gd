@@ -48,7 +48,7 @@ var enter_wall_slide_direction
 func _ready():
 	pass
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Make sure the player level aligns with the actual level
 	current_level = get_parent().level_instance
 	
@@ -58,18 +58,18 @@ func _physics_process(delta):
 	if not gun_shots<MAX_BULLETS:
 		motion.y = clamp(motion.y, -MAX_MOTION.y, MAX_MOTION.y)
 	bounce()
-	move_and_slide(motion, UP, false, 4, 0.785398, false)
+	motion = move_and_slide(motion, UP, false, 4, 0.785398, false)
 	up_collision()
 	side_collision()
 	if not paused:
 		movement(left,right)
-		jumping(jump,left,right)
+		jumping(jump)
 		jump_breaker(jump)
 		early_jump(jump,left,right)
 		bounce()
 		coyote_jump()
 		animate(left,right)
-	next_level(1)
+	next_level()
 	if Input.is_action_just_pressed("god_mode"):
 		if godmode:
 			godmode = false
@@ -243,7 +243,7 @@ func right():
 				motion.x+=50
 		
 	
-func jumping(jump,left,right):
+func jumping(jump):
 	if jump_count > 0:
 		if (jump_count == max_jump_count and is_on_floor()) or jump_count < max_jump_count:
 			can_jump = true
@@ -418,8 +418,9 @@ func die():
 			health = -1
 				
 	for danger in get_tree().get_nodes_in_group("dangers"):
-		if $Collision.overlaps_area(danger.get_node("Item")):
-			health = -1
+		if not danger.get_node_or_null("Item") == null:
+			if $Collision.overlaps_area(danger.get_node_or_null("Item")):
+				health = -1
 				
 
 			
@@ -436,7 +437,7 @@ func die():
 	
 
 	
-func next_level(change):
+func next_level():
 	for door in get_tree().get_nodes_in_group("level portals"):
 		if $Collision.overlaps_area(door) and get_parent().enemys.size() == 0:
 			get_parent().level = door.trans_data["level"]

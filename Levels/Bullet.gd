@@ -22,7 +22,7 @@ func _process(delta):
 	
 	for tilemap in get_tree().current_scene.level_instance.get_children():
 		if "TileMap" in str(tilemap):
-			if $Collision.overlaps_body(tilemap):
+			if $Collision.overlaps_body(tilemap) and not get_parent().get_node("Player").godmode:
 				# If touching the map delete the instance and its object in the level array
 				if side == "player":
 					get_parent().player_bullets.erase(self)
@@ -45,7 +45,7 @@ func _process(delta):
 				queue_free()
 		if get_parent().get_node("Player").godmode:
 			scale = Vector2(100, 100)
-			speed = 2500
+			speed = 500
 		else:
 			scale = Vector2(5, 5)
 			speed = 500

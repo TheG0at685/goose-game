@@ -28,7 +28,7 @@ func _ready():
 	# Draw the pause menu after everything else to put it at the front of the scene
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	play()
 
 func change_level(pos):

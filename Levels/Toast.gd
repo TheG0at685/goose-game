@@ -34,9 +34,14 @@ func attack_player():
 		if position.x > player.position.x:
 			# The player is to the left
 			velocity.x -= speed
+			$AnimatedSprite.flip_h = true
 		else:
 			# The player is to the right
 			velocity.x += speed
+			$AnimatedSprite.flip_h = false
+		$AnimatedSprite.play("run")
+	else:
+		$AnimatedSprite.play("default")
 		
 func damage():
 	for bullet in get_tree().get_nodes_in_group("bullets"):

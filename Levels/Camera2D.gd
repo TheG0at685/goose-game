@@ -28,7 +28,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# Make the camera move faster the further it is from the player
 	camera_speed = position.distance_to(player.position)/50
 	if glide_to_player:

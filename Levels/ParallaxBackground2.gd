@@ -10,7 +10,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	offset.x = player.position.x * -0.01
 	offset.y = player.position.y * -0.002
 	if mode == "desert":
