@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Images/falling_bridge.png" type="Texture" id=1]
+
+[node name="Falling bridge" type="RigidBody2D"]
+position = Vector2( -3790, 259 )
+mass = 0.01
+gravity_scale = 0.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 761, 210 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 193.5, -59, 380.5, -58, 380.5, 3, 293.5, 3, 293.5, 54, 290.5, 54, 198.5, 56, 198.5, 104.8, -380.5, 105, -380.5, 48, -290.5, 49, -290.5, 0.199997, -287.3, -3, -189.5, -3, -99.5, -4, -99.5, -105, 193.5, -105 )

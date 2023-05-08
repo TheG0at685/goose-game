@@ -2,6 +2,7 @@ tool
 extends RigidBody2D
 
 export var fall_on_touch = false
+export var fall_on_enemy_touch = true
 export var fall_on_bullet = true
 export var collision_size = Vector2(1, 1)
 export var delay = 0.0
@@ -44,22 +45,33 @@ func _process(delta):
 					if delay > 0:
 						yield(get_tree().create_timer(delay),"timeout")
 					fall()
-		if fall_on_touch and $Area2D.overlaps_body(get_tree().current_scene.get_node("Player")):
-			if delay > 0:
-				yield(get_tree().create_timer(delay),"timeout")
-			gravity_scale = 15
-			fall()
+		if fall_on_touch:
+			if $Area2D.overlaps_body(get_tree().current_scene.get_node("Player")):
+				if delay > 0:
+					yield(get_tree().create_timer(delay),"timeout")
+				gravity_scale = 15
+				fall()
+			for enemy in get_tree().get_nodes_in_group("enemys"):
+				if $Area2D.overlaps_body(enemy) and fall_on_enemy_touch: 
+					if delay > 0:
+						yield(get_tree().create_timer(delay),"timeout")
+					gravity_scale = 15
+					fall()
+					break
 			
 			
 			
 		if $Bottom.overlaps_body(get_tree().current_scene.get_node("Player")):
 			get_tree().current_scene.get_node("Player").health = -1
 			get_tree().current_scene.get_node("Player").die()
-			
-		for enemy in get_tree().get_nodes_in_group("enemys"):
-			if not enemy == null:
-				if $Bottom.overlaps_body(enemy):
-					enemy.health = -1
+		
+		if not get_tree() == null:
+			if not len(get_tree().get_nodes_in_group("enemys")) == 0:
+				for enemy in get_tree().get_nodes_in_group("enemys"):
+					if not enemy == null:
+						if $Bottom.overlaps_body(enemy):
+							enemy.health = -1
+		
 				
 		if not camera_shook:
 			$Bottom/Particles2D.emitting = true

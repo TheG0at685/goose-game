@@ -18,7 +18,7 @@ func _process(delta):
 	apply_gravity()
 	attack_player()
 	damage()
-	move_and_slide(velocity, Vector2(0, -1))
+	move_and_slide(velocity, Vector2(0, -1), false, 4, 0.785398, false)
 	velocity = Vector2()
 
 func apply_gravity():
