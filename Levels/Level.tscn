@@ -776,7 +776,7 @@ layer = -128
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Sky"]
 modulate = Color( 0.0117647, 0.313726, 0.419608, 1 )
-position = Vector2( 252, 204 )
+position = Vector2( 226, 249 )
 scale = Vector2( 5000, 5000 )
 mesh = SubResource( 9 )
 
