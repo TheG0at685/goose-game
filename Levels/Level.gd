@@ -16,7 +16,7 @@ var menu_instance = pause_menu.instance()
 # The closer it is to 0, the faster it will run
 var run_speed = 0
 var current_song = null
-
+var shown_gun_tutorial = false
 
 
 # Called when the node enters the scene tree for the first time.
