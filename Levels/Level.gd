@@ -30,6 +30,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	play()
+	if level < 11:
+		$ParallaxBackground2.mode = "temple"
+	else:
+		$ParallaxBackground2.mode = "desert"
 
 func change_level(pos):
 	# Reset the scrolling background
@@ -83,11 +87,14 @@ func time_slow():
 		run_speed = 0
 		
 func play():
-	if not $Player/AudioStreamPlayer2D.playing:
-		$Player/AudioStreamPlayer2D.stream = load(current_song)
-		$Player/AudioStreamPlayer2D.play()
-	if not $Player/AudioStreamPlayer2D.stream == load(current_song):	
-		$Player/AudioStreamPlayer2D.stream = load(current_song)
-		$Player/AudioStreamPlayer2D.playing = true 
+	if not current_song == null:
+		if not $Player/AudioStreamPlayer2D.playing:
+			$Player/AudioStreamPlayer2D.stream = load(current_song)
+			$Player/AudioStreamPlayer2D.play()
+		if not $Player/AudioStreamPlayer2D.stream == load(current_song):	
+			$Player/AudioStreamPlayer2D.stream = load(current_song)
+			$Player/AudioStreamPlayer2D.playing = true 
+	else:
+		$Player/AudioStreamPlayer2D.stop()
 
 		

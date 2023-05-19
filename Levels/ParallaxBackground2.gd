@@ -15,6 +15,8 @@ func _process(_delta):
 	offset.y = player.position.y * -0.002
 	if mode == "desert":
 		$"Desert background".visible = true
+		$"Temple background".visible = false
 	else:
 		$"Desert background".visible = false
+		$"Temple background".visible = true
 	

@@ -1,15 +1,11 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://Levels/temple blocks.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/desert tile map (1).png" type="Texture" id=1]
 [ext_resource path="res://Assets/Images/spike.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Images/temple_tilesetcostume1.png" type="Texture" id=3]
 [ext_resource path="res://Levels/OnOff tiles.gd" type="Script" id=4]
-[ext_resource path="res://Bounce.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Falling object.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Level11.gd" type="Script" id=5]
 [ext_resource path="res://Levels/Level portal.gd" type="Script" id=7]
-[ext_resource path="res://Toast.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Falling bridge.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Levels/Level8.gd" type="Script" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 96, 0, 96, 96, 0, 96 )
@@ -170,111 +166,293 @@ points = PoolVector2Array( 0, 0, 97, 0, 97, 55, 0, 55 )
 } ]
 1/z_index = 0
 
-[sub_resource type="ConvexPolygonShape2D" id=81]
-points = PoolVector2Array( 0, 0, 30, 0, 30, 30, 0, 30 )
+[sub_resource type="RectangleShape2D" id=85]
+extents = Vector2( 25.5, 55 )
 
-[sub_resource type="ConvexPolygonShape2D" id=82]
-points = PoolVector2Array( 0, 0.5, 30, 0.5, 30, 30, 0, 30 )
+[sub_resource type="QuadMesh" id=86]
 
-[sub_resource type="ConvexPolygonShape2D" id=88]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 18, 0, 18 )
+[sub_resource type="ConvexPolygonShape2D" id=26]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
 
-[sub_resource type="ConvexPolygonShape2D" id=89]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 18, 0, 18 )
+[sub_resource type="ConvexPolygonShape2D" id=27]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 72, 0, 72 )
 
-[sub_resource type="TileSet" id=84]
-0/name = "temple blocks.png 0"
+[sub_resource type="ConvexPolygonShape2D" id=37]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=28]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=29]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=30]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=31]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=32]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=33]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=34]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=35]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 70, 0, 70 )
+
+[sub_resource type="TileSet" id=93]
+0/name = "desert tile map.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 1, 56, 30, 30 )
+0/region = Rect2( 230, 68, 72, 72 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 81 )
+0/shape = SubResource( 26 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 81 ),
+"shape": SubResource( 26 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
-1/name = "temple blocks.png 1"
+1/name = "desert tile map.png 1"
 1/texture = ExtResource( 1 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 1, 21, 30, 30 )
+1/region = Rect2( 228, 157, 74, 72 )
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 82 )
+1/shape = SubResource( 27 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 82 ),
+"shape": SubResource( 27 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
-6/name = "temple blocks.png 6"
+2/name = "desert tile map.png 2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 130, 157, 72, 72 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 28 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 28 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "desert tile map.png 3"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 16, 157, 72, 72 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 29 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 29 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "desert tile map.png 4"
+4/texture = ExtResource( 1 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 227, 280, 72, 72 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 30 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 30 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "desert tile map.png 5"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 132, 279, 72, 72 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 31 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 31 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "desert tile map.png 6"
 6/texture = ExtResource( 1 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 0, 0, 32, 18 )
+6/region = Rect2( 16, 279, 74, 72 )
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
 6/shape_offset = Vector2( 0, 0 )
 6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape = SubResource( 88 )
+6/shape = SubResource( 32 )
 6/shape_one_way = false
 6/shape_one_way_margin = 1.0
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 88 ),
+"shape": SubResource( 32 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
-7/name = "temple blocks.png 7"
+7/name = "desert tile map.png 7"
 7/texture = ExtResource( 1 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 14, 0, 16, 18 )
+7/region = Rect2( 131, 400, 72, 72 )
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape = SubResource( 89 )
+7/shape = SubResource( 33 )
 7/shape_one_way = false
 7/shape_one_way_margin = 1.0
 7/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 89 ),
+"shape": SubResource( 33 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 7/z_index = 0
+8/name = "desert tile map.png 8"
+8/texture = ExtResource( 1 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 224, 399, 72, 72 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape = SubResource( 34 )
+8/shape_one_way = false
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 34 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+8/z_index = 0
+9/name = "desert tile map.png 9"
+9/texture = ExtResource( 1 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 16, 505, 74, 70 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape = SubResource( 35 )
+9/shape_one_way = false
+9/shape_one_way_margin = 1.0
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 35 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+9/z_index = 0
+10/name = "desert tile map.png 10"
+10/texture = ExtResource( 1 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 17, 400, 72, 72 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape = SubResource( 37 )
+10/shape_one_way = false
+10/shape_one_way_margin = 1.0
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 37 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+10/z_index = 0
+11/name = "desert tile map.png 11"
+11/texture = ExtResource( 1 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 11, 400, 6, 6 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=85]
-extents = Vector2( 25.5, 55 )
-
-[sub_resource type="QuadMesh" id=86]
-
-[node name="Level1" type="KinematicBody2D"]
-script = ExtResource( 10 )
+[node name="Level11" type="KinematicBody2D"]
+script = ExtResource( 5 )
 
 [node name="Danger" type="TileMap" parent="." groups=["dangers"]]
 tile_set = SubResource( 5 )
@@ -291,38 +469,15 @@ script = ExtResource( 4 )
 tile_set = SubResource( 92 )
 cell_size = Vector2( 96, 50 )
 format = 1
-tile_data = PoolIntArray( -852086, 0, 0, -852085, 0, 0, -852084, 0, 0, -852083, 0, 0, -852082, 0, 0, -852081, 0, 0, -852080, 0, 0, -852079, 0, 0, -852078, 0, 0, -852077, 0, 0, -852076, 0, 0, -852075, 0, 0, -852074, 0, 0, -852073, 0, 0, -852072, 0, 0, -852071, 0, 0, -852070, 0, 0, -852069, 0, 0, -852068, 0, 0, -852067, 0, 0, -852066, 0, 0, -852065, 0, 0, -852064, 0, 0, -852063, 0, 0, -852062, 0, 0, -852061, 0, 0, -852060, 0, 0, -852059, 0, 0, -852058, 0, 0, -852057, 0, 0, -852056, 0, 0, -852055, 0, 0, -852054, 0, 0, -852053, 0, 0, -852052, 0, 0, -852051, 0, 0, -852050, 0, 0, -852049, 0, 0, -852048, 0, 0, -852047, 0, 0, -852046, 0, 0, -852045, 0, 0, -852044, 0, 0, -852043, 0, 0, -852042, 0, 0, -852041, 0, 0, -852040, 0, 0, -852039, 0, 0, -852038, 0, 0, -852037, 0, 0, -852036, 0, 0, -852035, 0, 0, -852034, 0, 0, -852033, 0, 0, -852032, 0, 0, -852031, 0, 0, -852030, 0, 0, -852029, 0, 0, -852028, 0, 0, -786535, 0, 0, -786534, 0, 0, 196582, 0, 0, 196583, 0, 0, 196584, 0, 0, 196585, 0, 0, 196586, 0, 0, 196587, 0, 0, 196588, 0, 0, 196589, 0, 0, 196590, 0, 0, 196591, 0, 0, 196592, 0, 0, 196593, 0, 0, 196594, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0 )
-
-[node name="TileMap4" type="TileMap" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-tile_set = SubResource( 92 )
-cell_size = Vector2( 96, 50 )
-collision_layer = 0
-collision_mask = 0
-format = 1
-
-[node name="TileMap2" type="TileMap" parent="."]
-scale = Vector2( 2, 2 )
-tile_set = SubResource( 84 )
-cell_size = Vector2( 29, 29 )
-show_collision = true
-cell_clip_uv = true
-format = 1
-
-[node name="TileMap3" type="TileMap" parent="."]
-scale = Vector2( 2, 2 )
-tile_set = SubResource( 84 )
-cell_size = Vector2( 16, 18 )
-cell_clip_uv = true
-format = 1
+tile_data = PoolIntArray( -327688, 0, 0, -327687, 0, 0, -327686, 0, 0, -327685, 0, 0, -327684, 0, 0, -327683, 0, 0, -327682, 0, 0, -327681, 0, 0, -393216, 0, 0, -393215, 0, 0, 262129, 0, 0, 262130, 0, 0, 262131, 0, 0, 262132, 0, 0, 262133, 0, 0, 262134, 0, 0, 262135, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 1, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0 )
 
 [node name="Level portal" type="Area2D" parent="." groups=["level portals"]]
 visible = false
-position = Vector2( -10894, -1834 )
+position = Vector2( -13957, -3994 )
 scale = Vector2( 1, 20 )
 script = ExtResource( 7 )
 trans_data = {
-"level": 11,
+"level": 8,
 "position": Vector2( 0, 0 )
 }
 
@@ -341,7 +496,7 @@ position = Vector2( 367, -146 )
 scale = Vector2( 1, 4 )
 script = ExtResource( 7 )
 trans_data = {
-"level": 9,
+"level": 10,
 "position": Vector2( -13700, -4000 )
 }
 
@@ -354,85 +509,12 @@ position = Vector2( 15, 0.999997 )
 scale = Vector2( 23.5, 112 )
 mesh = SubResource( 86 )
 
-[node name="Falling object" parent="." instance=ExtResource( 6 )]
-position = Vector2( -920, 435 )
-fall_on_touch = true
-fall_on_bullet = false
-collision_size = Vector2( 3.1, 3.1 )
-size = Vector2( 3.1, 3.1 )
-
-[node name="Toast" parent="." instance=ExtResource( 8 )]
-position = Vector2( -1658, -7 )
-
-[node name="Toast2" parent="." instance=ExtResource( 8 )]
-position = Vector2( -6832, -2836 )
-
-[node name="Toast3" parent="." instance=ExtResource( 8 )]
-position = Vector2( -6975, -2839 )
-
-[node name="Toast4" parent="." instance=ExtResource( 8 )]
-position = Vector2( -6839, -3036 )
-
-[node name="Toast5" parent="." instance=ExtResource( 8 )]
-position = Vector2( -6982, -3039 )
-
-[node name="Toast6" parent="." instance=ExtResource( 8 )]
-position = Vector2( -8967, -2856 )
-
-[node name="Toast7" parent="." instance=ExtResource( 8 )]
-position = Vector2( -9110, -2859 )
-
-[node name="Toast8" parent="." instance=ExtResource( 8 )]
-position = Vector2( -8974, -3056 )
-
-[node name="Toast9" parent="." instance=ExtResource( 8 )]
-position = Vector2( -9117, -3059 )
-
-[node name="Falling bridge" parent="." instance=ExtResource( 9 )]
-position = Vector2( -2947, 182 )
-
-[node name="Falling bridge2" parent="." instance=ExtResource( 9 )]
-position = Vector2( -3833, -213 )
-
-[node name="Falling bridge3" parent="." instance=ExtResource( 9 )]
-position = Vector2( -4684, -683 )
-
-[node name="Bounce" parent="Falling bridge3" instance=ExtResource( 5 )]
-position = Vector2( -88, -57 )
-rotation = 4.04393
-scale = Vector2( 3, 3 )
-power = 15
-
-[node name="Falling object2" parent="." instance=ExtResource( 6 )]
-position = Vector2( -2852, -1507 )
-fall_on_touch = true
-fall_on_bullet = false
-collision_size = Vector2( 2, 20 )
-size = Vector2( 2, 2 )
-texture = "rock"
-
-[node name="Falling object3" parent="." instance=ExtResource( 6 )]
-position = Vector2( -3844, -1681 )
-fall_on_touch = true
-fall_on_bullet = false
-collision_size = Vector2( 2, 20 )
-size = Vector2( 2, 2 )
-texture = "rock"
-
-[node name="Falling object4" parent="." instance=ExtResource( 6 )]
-position = Vector2( -6897, -2398 )
-fall_on_touch = true
-fall_on_enemy_touch = false
-fall_on_bullet = false
-collision_size = Vector2( 40, 20 )
-delay = 1.0
-size = Vector2( 3, 1 )
-
-[node name="Falling object5" parent="." instance=ExtResource( 6 )]
-position = Vector2( -9073, -2421 )
-fall_on_touch = true
-fall_on_enemy_touch = false
-fall_on_bullet = false
-collision_size = Vector2( 40, 20 )
-delay = 1.0
-size = Vector2( 3, 1 )
+[node name="TileMap3" type="TileMap" parent="."]
+position = Vector2( -13, 217 )
+scale = Vector2( 2.3, 2.3 )
+tile_set = SubResource( 93 )
+cell_size = Vector2( 71, 69 )
+show_collision = true
+collision_layer = 0
+collision_mask = 0
+format = 1
