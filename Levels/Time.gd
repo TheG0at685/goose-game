@@ -4,7 +4,7 @@ extends RichTextLabel
 var seconds = 0
 var minutes = 0
 var hours = 0
-
+var counting = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,3 +24,7 @@ func _on_Second_timeout():
 		minutes = 0
 		seconds = 0
 		hours += 1
+
+
+func _on_Button_pressed():
+	$Second.start()

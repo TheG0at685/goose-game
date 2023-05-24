@@ -41,10 +41,12 @@ func _process(delta):
 	if not Engine.is_editor_hint():
 		if fall_on_bullet:
 			for bullet in get_tree().get_nodes_in_group("bullets"):
-				if $Area2D.overlaps_area(bullet.get_node("Collision")):
-					if delay > 0:
-						yield(get_tree().create_timer(delay),"timeout")
-					fall()
+				
+				if weakref(bullet).get_ref():
+					if $Area2D.overlaps_area(bullet.get_node("Collision")):
+						if delay > 0:
+							yield(get_tree().create_timer(delay),"timeout")
+						fall()
 		if fall_on_touch:
 			if $Area2D.overlaps_body(get_tree().current_scene.get_node("Player")):
 				if delay > 0:

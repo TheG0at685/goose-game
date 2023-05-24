@@ -28,6 +28,7 @@ func _process(delta):
 					get_parent().player_bullets.erase(self)
 				else:
 					get_parent().enemy_bullets.erase(self)
+				remove_from_group("bullets")
 				queue_free()
 
 		
@@ -35,6 +36,7 @@ func _process(delta):
 		# Logic for specifcily enenmy bullets
 		if $Collision.overlaps_body(get_parent().get_node("Player")):
 			get_parent().enemy_bullets.erase(self)
+			remove_from_group("bullets")
 			queue_free()
 	
 	if side == "player":
@@ -42,6 +44,7 @@ func _process(delta):
 		for enemy in get_parent().enemys:
 			if $Collision.overlaps_area(enemy.get_node("Collision")):
 				get_parent().player_bullets.erase(self)
+				remove_from_group("bullets")
 				queue_free()
 		if get_parent().get_node("Player").godmode:
 			scale = Vector2(100, 100)
@@ -56,5 +59,8 @@ func _process(delta):
 			get_parent().enemy_bullets.erase(self)
 		else:
 			get_parent().player_bullets.erase(self)
+		remove_from_group("bullets")
 		queue_free()
+		
+		
 

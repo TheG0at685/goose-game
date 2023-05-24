@@ -429,7 +429,7 @@ delay = 1.0
 size = Vector2( 3, 1 )
 
 [node name="Falling object5" parent="." instance=ExtResource( 6 )]
-position = Vector2( -9073, -2421 )
+position = Vector2( -9022, -2449 )
 fall_on_touch = true
 fall_on_enemy_touch = false
 fall_on_bullet = false

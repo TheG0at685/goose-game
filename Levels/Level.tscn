@@ -671,7 +671,6 @@ rect_scale = Vector2( 3, 3 )
 script = ExtResource( 6 )
 
 [node name="Second" type="Timer" parent="UI/Time"]
-autostart = true
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 script = ExtResource( 9 )
@@ -830,4 +829,5 @@ script = ExtResource( 11 )
 [connection signal="animation_finished" from="UI/ScreenFade/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="UI/debug menu/SpinBox/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="UI/Time/Second" to="UI/Time" method="_on_Second_timeout"]
+[connection signal="pressed" from="Cover/Sprite/Button" to="UI/Time" method="_on_Button_pressed"]
 [connection signal="pressed" from="Cover/Sprite/Button" to="Cover" method="_on_Button_pressed"]
