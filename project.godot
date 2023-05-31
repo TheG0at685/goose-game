@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="the amazing goose game"
 run/main_scene="res://Levels/Level.tscn"
-config/icon="res://Assets/Images/icon.png"
+config/icon="res://Levels/Assets/Images/icon.png"
 
 [display]
 

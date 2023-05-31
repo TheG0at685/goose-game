@@ -13,6 +13,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	visible = true
+	if not $"Cutscene player".is_playing():
+		$"Cutscene player".hide()
+	else:
+		$"Cutscene player".show()
 
 	
 

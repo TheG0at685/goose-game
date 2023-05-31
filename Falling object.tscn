@@ -1,8 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Falling object.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Images/falling block.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Images/temple_tilesetcostume1.png" type="Texture" id=3]
+[ext_resource path="res://Levels/Assets/Images/falling block.png" type="Texture" id=2]
+[ext_resource path="res://Levels/Assets/Images/temple_tilesetcostume1.png" type="Texture" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=88]
 

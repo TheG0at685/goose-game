@@ -1,20 +1,20 @@
 [gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://Assets/Images/goose_wallslide (1).png" type="Texture" id=1]
+[ext_resource path="res://Levels/Assets/Images/goose_wallslide (1).png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Levels/light.jpeg" type="Texture" id=3]
-[ext_resource path="res://Assets/Images/goose hand gun.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Images/goose_walk2.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Images/goose_walk1.png" type="Texture" id=6]
+[ext_resource path="res://Levels/Assets/Images/goose hand gun.png" type="Texture" id=4]
+[ext_resource path="res://Levels/Assets/Images/goose_walk2.png" type="Texture" id=5]
+[ext_resource path="res://Levels/Assets/Images/goose_walk1.png" type="Texture" id=6]
 [ext_resource path="res://Player/Thought.gd" type="Script" id=7]
 [ext_resource path="res://Player/Gun_body.gd" type="Script" id=8]
-[ext_resource path="res://Assets/Images/goose hand.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Images/click_tutorial1.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Images/click_tutorial2.png" type="Texture" id=11]
-[ext_resource path="res://Assets/sounds/Goose god mode (1).mp3" type="AudioStream" id=12]
-[ext_resource path="res://Assets/Images/wall_hold_tutorial.png" type="Texture" id=13]
+[ext_resource path="res://Levels/Assets/Images/goose hand.png" type="Texture" id=9]
+[ext_resource path="res://Levels/Assets/Images/click_tutorial1.png" type="Texture" id=10]
+[ext_resource path="res://Levels/Assets/Images/click_tutorial2.png" type="Texture" id=11]
+[ext_resource path="res://Levels/Assets/sounds/Goose god mode (1).mp3" type="AudioStream" id=12]
+[ext_resource path="res://Levels/Assets/Images/wall_hold_tutorial.png" type="Texture" id=13]
 [ext_resource path="res://Player/Light2D.gd" type="Script" id=14]
-[ext_resource path="res://Assets/Images/goose_idle.png" type="Texture" id=23]
+[ext_resource path="res://Levels/Assets/Images/goose_idle.png" type="Texture" id=23]
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
@@ -148,7 +148,7 @@ range_layer_max = 1
 script = ExtResource( 14 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -60, 174, 36, 175, 107, -53, 107, -173, 34, -174, 1, -39, -117, -39, -130, 92 )
+polygon = PoolVector2Array( -115, 174, 127, 168, 107, -53, 107, -173, 34, -174, 1, -39, -117, -39, -130, 92 )
 
 [connection signal="animation_finished" from="Thought" to="." method="_on_Thought_animation_finished"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_CoyoteTimer_timeout"]

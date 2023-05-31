@@ -1,18 +1,19 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Levels/UI.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=3]
 [ext_resource path="res://Levels/Target.gd" type="Script" id=4]
-[ext_resource path="res://Assets/Images/desert tile map (1).png" type="Texture" id=5]
+[ext_resource path="res://Levels/Assets/Images/desert tile map (1).png" type="Texture" id=5]
 [ext_resource path="res://Levels/Time.gd" type="Script" id=6]
-[ext_resource path="res://Assets/Images/cover.png" type="Texture" id=7]
+[ext_resource path="res://Levels/Assets/Images/cover.png" type="Texture" id=7]
 [ext_resource path="res://Levels/Cover.gd" type="Script" id=8]
 [ext_resource path="res://Levels/ParallaxBackground2.gd" type="Script" id=9]
-[ext_resource path="res://Assets/sounds/658266__matrixxx__retro-inspect-sound-ui-or-in-game-notification.wav" type="AudioStream" id=10]
+[ext_resource path="res://Levels/Assets/sounds/658266__matrixxx__retro-inspect-sound-ui-or-in-game-notification.wav" type="AudioStream" id=10]
 [ext_resource path="res://Levels/CanvasModulate.gd" type="Script" id=11]
-[ext_resource path="res://Assets/Images/goose_idle.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Images/castle tle2.png" type="Texture" id=13]
+[ext_resource path="res://Levels/Assets/Images/goose_idle.png" type="Texture" id=12]
+[ext_resource path="res://Levels/Assets/Images/castle tle2.png" type="Texture" id=13]
+[ext_resource path="res://Levels/Assets/cutscene.ogv" type="VideoStream" id=14]
 [ext_resource path="res://Levels/Camera2D.gd" type="Script" id=18]
 
 [sub_resource type="SphereMesh" id=3]
@@ -576,12 +577,14 @@ scale = Vector2( 10, 10 )
 mesh = SubResource( 3 )
 
 [node name="UI" type="CanvasLayer" parent="."]
+pause_mode = 2
 layer = 128
 script = ExtResource( 1 )
 
 [node name="Cutscene player" type="VideoPlayer" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1038.0
+margin_bottom = 603.0
+stream = ExtResource( 14 )
 
 [node name="ScreenFade" type="ColorRect" parent="UI"]
 visible = false
@@ -826,6 +829,7 @@ z_index = -4096
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 11 )
 
+[connection signal="finished" from="UI/Cutscene player" to="." method="_on_Cutscene_player_finished"]
 [connection signal="animation_finished" from="UI/ScreenFade/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="UI/debug menu/SpinBox/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="UI/Time/Second" to="UI/Time" method="_on_Second_timeout"]

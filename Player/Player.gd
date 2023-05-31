@@ -201,6 +201,7 @@ func movement(left,right):
 	if is_on_floor() or motion.y < -500:
 		SPEED = 500
 	else:
+		print("BRO")
 		if SPEED > 400:
 			SPEED -= 20
 	

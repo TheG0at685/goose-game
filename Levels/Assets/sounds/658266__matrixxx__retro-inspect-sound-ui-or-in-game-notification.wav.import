@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/658266__matrixxx__retro-inspect-sound-ui-or-in-game-notification.wav-37a8d75f230e63bc78c132844767e0ef.sample"
+
+[deps]
+
+source_file="res://Levels/Assets/sounds/658266__matrixxx__retro-inspect-sound-ui-or-in-game-notification.wav"
+dest_files=[ "res://.import/658266__matrixxx__retro-inspect-sound-ui-or-in-game-notification.wav-37a8d75f230e63bc78c132844767e0ef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
