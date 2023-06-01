@@ -14,3 +14,6 @@ func _process(delta):
 		played = true
 		get_tree().current_scene.get_node("UI/Cutscene player").play()
 		get_tree().paused = true
+		get_tree().current_scene.current_song = "res://Assets/sounds/The deadly temple.wav"
+		get_tree().current_scene.play()
+

@@ -17,6 +17,10 @@ func _process(_delta):
 		$"Cutscene player".hide()
 	else:
 		$"Cutscene player".show()
+		if Input.is_action_just_released("x"):
+			$"Cutscene player".stop()
+			$"Cutscene player".emit_signal("finished")
+
 
 	
 

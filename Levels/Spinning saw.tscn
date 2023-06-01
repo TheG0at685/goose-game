@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Levels/Spinning saw.gd" type="Script" id=1]
-[ext_resource path="res://Levels/Assets/Images/desert tile map (1).png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/desert tile map (1).png" type="Texture" id=2]
 
 
 [sub_resource type="QuadMesh" id=40]

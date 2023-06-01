@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Levels/Assets/Images/falling_bridge.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/falling_bridge.png" type="Texture" id=1]
 
 
 [node name="Falling bridge" type="RigidBody2D"]

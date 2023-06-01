@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Levels/Assets/Images/boss_image.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/boss_image.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Boss.gd" type="Script" id=2]
-[ext_resource path="res://Levels/Assets/Images/temple_tilesetcostume1.png" type="Texture" id=3]
+[ext_resource path="res://Kill zone.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=99]
 length = 0.001
@@ -56,61 +56,14 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 59.2, 335.0 ]
+"values": [ 60.0, -25.0 ]
 }
 
-[sub_resource type="ConvexPolygonShape2D" id=104]
-points = PoolVector2Array( 0, 0, 97, 0, 97, 55, 0, 55 )
-
-[sub_resource type="ConvexPolygonShape2D" id=105]
-points = PoolVector2Array( 0, 0, 97, 0, 97, 55, 0, 55 )
-
-[sub_resource type="TileSet" id=103]
-0/name = "temple_tilesetcostume1.png 0"
-0/texture = ExtResource( 3 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 131, 33, 97, 55 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 104 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 104 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-1/name = "temple_tilesetcostume1.png 1"
-1/texture = ExtResource( 3 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 131, 141, 97, 55 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 105 )
-1/shape_one_way = false
-1/shape_one_way_margin = 1.0
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 105 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-1/z_index = 0
+[sub_resource type="RectangleShape2D" id=101]
+extents = Vector2( 322.612, 71.0111 )
 
 [node name="Boss" type="Node2D"]
-scale = Vector2( 3, 3 )
+scale = Vector2( 7, 7 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -133,10 +86,19 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 160.508, 164.246, 80.8981, 283.497 )
 
-[node name="TileMap" type="TileMap" parent="Arm joint"]
-rotation = 0.436332
-scale = Vector2( 0.5, 0.5 )
-tile_set = SubResource( 103 )
-cell_size = Vector2( 96, 50 )
-format = 1
-tile_data = PoolIntArray( 262131, 0, 0, 262132, 0, 0, 262133, 0, 0, 262134, 0, 0, 262135, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 327667, 0, 0, 327668, 0, 0, 327669, 0, 0, 327670, 0, 0, 327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 393203, 0, 0, 393204, 0, 0, 393205, 0, 0, 393206, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 458739, 0, 0, 458740, 0, 0, 458741, 0, 0, 458742, 0, 0, 458743, 0, 0, 458744, 0, 0, 458745, 0, 0, 458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0 )
+[node name="StaticBody2D" type="StaticBody2D" parent="Arm joint"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Arm joint/StaticBody2D"]
+position = Vector2( -114.069, 624.749 )
+rotation = 2.0176
+scale = Vector2( 3.15546, 3.00884 )
+polygon = PoolVector2Array( -199.957, 30.0055, -200.957, 30.0055, -200.957, 75.0055, -199.957, 72.0055, -174.957, 72.0055, -172.957, 77.0055, -169.957, 77.0055, -169.957, 99.0055, -168.957, 99.0055, -173.957, 235.005, -173.957, 251.005, -185.957, 249.005, -186.957, 249.005, -192.957, 256.005, -193.957, 256.005, -194.957, 268.005, -194.957, 292.005, -187.957, 298.005, -187.957, 299.005, -181.957, 300.005, -181.957, 301.005, -128.957, 301.005, -123.957, 295.005, -122.957, 295.005, -122.957, 256.005, -125.957, 256.005, -127.957, 251.005, -140.957, 251.005, -136.957, 135.005, -136.957, 105.005, -132.957, 101.005, -131.957, 101.005, -136.957, 95.0055, -136.957, 75.0055, -138.957, 73.0055, -141.957, 73.0055, -140.957, 68.0055, -140.957, 65.0055, -168.957, 39.0055, -168.957, 38.0055, -175.957, 38.0055, -177.957, 34.0055, -177.957, 33.0055, -183.957, 33.0055, -185.957, 30.0055, -185.957, 29.0055, -199.957, 29.0055 )
+
+[node name="Kill zone" type="Area2D" parent="Arm joint"]
+position = Vector2( -115.479, 16.3015 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arm joint/Kill zone"]
+position = Vector2( -296.559, -26.9029 )
+rotation = 0.492183
+shape = SubResource( 101 )

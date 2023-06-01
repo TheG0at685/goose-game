@@ -1,8 +1,8 @@
 [gd_scene load_steps=36 format=2]
 
-[ext_resource path="res://Levels/Assets/Images/desert tile map (1).png" type="Texture" id=1]
-[ext_resource path="res://Levels/Assets/Images/spike.png" type="Texture" id=2]
-[ext_resource path="res://Levels/Assets/Images/temple_tilesetcostume1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Images/desert tile map (1).png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/spike.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/temple_tilesetcostume1.png" type="Texture" id=3]
 [ext_resource path="res://Levels/OnOff tiles.gd" type="Script" id=4]
 [ext_resource path="res://Levels/Level11.gd" type="Script" id=5]
 [ext_resource path="res://Bounce.tscn" type="PackedScene" id=6]
