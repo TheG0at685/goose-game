@@ -318,7 +318,7 @@ format = 1
 
 [node name="Level portal" type="Area2D" parent="." groups=["level portals"]]
 visible = false
-position = Vector2( -10894, -1834 )
+position = Vector2( -11000, -1857 )
 scale = Vector2( 1, 20 )
 script = ExtResource( 7 )
 trans_data = {

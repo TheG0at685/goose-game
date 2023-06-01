@@ -104,4 +104,4 @@ func _on_Cutscene_player_finished():
 	get_tree().paused = false
 	var boss = load("res://Boss.tscn").instance()
 	level_instance.add_child(boss)
-	boss.position = Vector2(-2000, -1500)
+	boss.position = Vector2(5000, -2800)

@@ -119,7 +119,7 @@ func god_mode():
 		
 func gun():
 	gun_shots = round(gun_shots)
-	if (Input.is_action_just_pressed("fire") or (Input.is_action_pressed("fire") and is_on_floor()))and gun_shots > 0 and can_fire and has_gun:
+	if (Input.is_action_just_pressed("fire") or Input.is_action_pressed("fire")) and gun_shots > 0 and can_fire and has_gun:
 		get_parent().get_node("Camera2D").shake(60, 0, 5)
 		if gun_shots == MAX_BULLETS:
 			motion.y = 0
@@ -375,9 +375,9 @@ func animate(left,right):
 				
 func fire_gun(x, y):
 	# Causes the player to be launched directly away from x and y
+	motion.y -= clamp((y - position.y) * 6, -1000, 1000) * GUN_STRENGTH
+	motion.y -= GRAVITY
 	if not is_on_floor():
-		motion.y -= clamp((y - position.y) * 6, -1000, 1000) * GUN_STRENGTH
-		motion.y -= GRAVITY
 		motion.x += clamp(position.x - x, -600, 600) * GUN_STRENGTH
 	create_bullet()
 	

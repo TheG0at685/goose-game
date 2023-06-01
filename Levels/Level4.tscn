@@ -599,7 +599,7 @@ margin_right = 454.0
 margin_bottom = 291.0
 rect_scale = Vector2( 2, 2 )
 tab_size = 20
-text = "The gun is a both a weapon and a traversal tool. If you're in the air and fire, you will be launched!"
+text = "The gun can be a powerful tool. Shoot to the ground to launch yourself into the air!!"
 script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/RichTextLabel"]
