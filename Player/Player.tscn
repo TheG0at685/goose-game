@@ -79,6 +79,7 @@ animations = [ {
 extents = Vector2( 148.486, 177.448 )
 
 [node name="Player" type="KinematicBody2D"]
+show_behind_parent = true
 script = ExtResource( 2 )
 
 [node name="Thought" type="AnimatedSprite" parent="."]

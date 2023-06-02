@@ -201,7 +201,6 @@ func movement(left,right):
 	if is_on_floor() or motion.y < -500:
 		SPEED = 500
 	else:
-		print("BRO")
 		if SPEED > 400:
 			SPEED -= 20
 	
@@ -421,6 +420,9 @@ func die():
 	for danger in get_tree().get_nodes_in_group("dangers"):
 		if not danger.get_node_or_null("Item") == null:
 			if $Collision.overlaps_area(danger.get_node_or_null("Item")):
+				health = -1
+		else:
+			if $Collision.overlaps_body(danger):
 				health = -1
 				
 

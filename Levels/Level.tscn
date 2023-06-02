@@ -565,6 +565,7 @@ z_index = 1
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+show_behind_parent = false
 position = Vector2( -250, -3000 )
 scale = Vector2( 0.3, 0.3 )
 

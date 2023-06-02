@@ -64,7 +64,7 @@ func new_level(pos, checking):
 			var level_format = "res://Levels/Level%d.tscn"
 			level1 = load(level_format % [level])
 			level_instance = level1.instance()
-			add_child(level_instance)
+			add_child_below_node($Player, level_instance)
 	for bullet in get_tree().get_nodes_in_group("bullets"):
 		bullet.queue_free()
 

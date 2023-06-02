@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Assets/Images/boss_image.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Boss.gd" type="Script" id=2]
 [ext_resource path="res://Kill zone.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Images/arm.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/desert tile map (1).png" type="Texture" id=5]
+[ext_resource path="res://Assets/Images/spike.png" type="Texture" id=6]
+[ext_resource path="res://Hitbox.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=99]
 length = 0.001
@@ -26,6 +29,42 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox/WorldEnvironment:environment:glow_intensity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitbox/WorldEnvironment:environment:glow_strength")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.65 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitbox/WorldEnvironment:environment:glow_bloom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -60,11 +99,442 @@ tracks/1/keys = {
 "values": [ 60.0, -30.0 ]
 }
 
+[sub_resource type="Animation" id=111]
+resource_name = "flash"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hitbox/WorldEnvironment:environment:glow_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.8, 8.0, 8.0, 0.8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox/WorldEnvironment:environment:glow_strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.65, 2.0, 2.0, 0.63 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox/WorldEnvironment:environment:glow_bloom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0 ]
+}
+
 [sub_resource type="RectangleShape2D" id=101]
 extents = Vector2( 830.715, 60.1913 )
 
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 96, 0, 96, 96, 0, 96 )
+
+[sub_resource type="StreamTexture" id=22]
+flags = 4
+
+[sub_resource type="ConvexPolygonShape2D" id=24]
+points = PoolVector2Array( 0, 0, 96, 0, 96, 96, 0, 96 )
+
+[sub_resource type="StreamTexture" id=79]
+flags = 4
+
+[sub_resource type="ConvexPolygonShape2D" id=80]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 102, 0, 102 )
+
+[sub_resource type="GDScript" id=25]
+
+[sub_resource type="TileSet" id=107]
+0/name = "danger.jpeg 0"
+0/texture = SubResource( 22 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 32, 32, 96, 96 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 4 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+2/name = "desert tile map.png 2"
+2/texture = SubResource( 79 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 32, 96, 96 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 24 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 24 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "spike.png 3"
+3/texture = ExtResource( 6 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 102 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 80 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 80 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "spike.png 4"
+4/texture = ExtResource( 6 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( -12, -14, 72, 73 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+script = SubResource( 25 )
+
+[sub_resource type="ConvexPolygonShape2D" id=88]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=89]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=103]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=104]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=105]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=102]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=94]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=95]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=96]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=97]
+points = PoolVector2Array( 0, 0, 72, 0, 72, 72, 0, 72 )
+
+[sub_resource type="ConvexPolygonShape2D" id=98]
+points = PoolVector2Array( 0, 0, 74, 0, 74, 70, 0, 70 )
+
+[sub_resource type="TileSet" id=106]
+0/name = "desert tile map.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 230, 68, 72, 72 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 88 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 88 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "desert tile map.png 1"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 228, 157, 74, 72 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 89 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 89 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "desert tile map.png 2"
+2/texture = ExtResource( 5 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 130, 157, 72, 72 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 104 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 104 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "desert tile map.png 3"
+3/texture = ExtResource( 5 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 16, 157, 72, 72 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 105 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 105 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "desert tile map.png 4"
+4/texture = ExtResource( 5 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 227, 280, 72, 72 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 102 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 102 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "desert tile map.png 5"
+5/texture = ExtResource( 5 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 132, 279, 72, 72 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 94 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 94 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "desert tile map.png 6"
+6/texture = ExtResource( 5 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 16, 279, 74, 72 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape = SubResource( 95 )
+6/shape_one_way = false
+6/shape_one_way_margin = 1.0
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 95 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
+7/name = "desert tile map.png 7"
+7/texture = ExtResource( 5 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 131, 400, 72, 72 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape = SubResource( 96 )
+7/shape_one_way = false
+7/shape_one_way_margin = 1.0
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 96 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
+8/name = "desert tile map.png 8"
+8/texture = ExtResource( 5 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 224, 399, 72, 72 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape = SubResource( 97 )
+8/shape_one_way = false
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 97 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+8/z_index = 0
+9/name = "desert tile map.png 9"
+9/texture = ExtResource( 5 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 16, 505, 74, 70 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape = SubResource( 98 )
+9/shape_one_way = false
+9/shape_one_way_margin = 1.0
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 98 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+9/z_index = 0
+10/name = "desert tile map.png 10"
+10/texture = ExtResource( 5 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 17, 400, 72, 72 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape = SubResource( 103 )
+10/shape_one_way = false
+10/shape_one_way_margin = 1.0
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 103 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+10/z_index = 0
+11/name = "desert tile map.png 11"
+11/texture = ExtResource( 5 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 11, 400, 6, 6 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=108]
+extents = Vector2( 93.2143, 50.4286 )
+
+[sub_resource type="QuadMesh" id=109]
+
+[sub_resource type="Environment" id=110]
+background_mode = 4
+glow_enabled = true
+glow_strength = 0.65
+glow_blend_mode = 0
+adjustment_brightness = 1.65
+
 [node name="Boss" type="Node2D"]
+show_behind_parent = true
 scale = Vector2( 7, 7 )
+z_index = -1
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -76,6 +546,7 @@ texture = ExtResource( 1 )
 playback_speed = 0.5
 anims/RESET = SubResource( 99 )
 "anims/arm smash" = SubResource( 100 )
+anims/flash = SubResource( 111 )
 
 [node name="Arm joint" type="Node2D" parent="."]
 position = Vector2( -229, -204 )
@@ -91,10 +562,10 @@ region_rect = Rect2( 160.508, 164.246, 80.8981, 283.497 )
 position = Vector2( -46.3387, -39.9639 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Arm joint/StaticBody2D"]
-position = Vector2( -771.647, -225.587 )
+position = Vector2( -771.396, -226.282 )
 rotation = 0.518363
 scale = Vector2( 3.15546, 3.00884 )
-polygon = PoolVector2Array( 278.5, -68.9, 281.5, -67.7, 281.5, 10.5, 280.5, 10.5, 280.5, 17.5, 278.4, 17.5, 262.4, 34.5, 260.5, 34.5, 260.5, 36.3, 257.3, 39.5, 255.5, 39.5, 255.5, 41.3, 252.3, 44.5, 244.9, 44.5, 242.9, 49.5, 221.5, 49.5, 221.5, 51.3, 218.3, 54.5, -231.5, 54.5, -231.5, 67.5, -233.5, 67.5, -235.9, 70.5, -280.5, 70.5, -280.5, 69.5, -281.5, 69.5, -281.568, 6.08781, -277.267, 6.11143, -277.151, 0.889282, -240.604, 1.26738, -240.539, 6.3006, -235.479, 6.056, -234.956, 21.4773, 216.912, 20.7424, 217.023, 16.5173, 241.38, 16.746, 241.311, 12.2351, 250.374, 10.5756, 251.196, -45.1137, 245.697, -40.9182, 240.282, -35.3928, 226.52, -35.6108, 225.726, -39.9833, 220.523, -40.6766, 221.141, -55.6293, 227.5, -63.5, 227.5, -66.3, 230.7, -69.5, 242.5, -69.5, 242.5, -70.5, 278.5, -70.5 )
+polygon = PoolVector2Array( 279.104, -60.9054, 281.005, -60.8474, 281.5, 10.5, 280.5, 10.5, 280.5, 17.5, 278.4, 17.5, 262.4, 34.5, 260.5, 34.5, 260.5, 36.3, 257.3, 39.5, 255.5, 39.5, 255.5, 41.3, 252.3, 44.5, 244.9, 44.5, 242.9, 49.5, 221.5, 49.5, 221.5, 51.3, 218.3, 54.5, -231.5, 54.5, -231.5, 67.5, -233.5, 67.5, -235.9, 70.5, -280.5, 70.5, -280.5, 69.5, -281.5, 69.5, -281.568, 6.08781, -277.267, 6.11143, -277.151, 0.889282, -240.604, 1.26738, -240.539, 6.3006, -235.479, 6.056, -234.956, 21.4773, 216.912, 20.7424, 217.023, 16.5173, 241.38, 16.746, 241.311, 12.2351, 250.374, 10.5756, 245.416, -41.0108, 241.202, -40.3692, 241.087, -35.337, 225.649, -35.5167, 225.358, -40.6461, 220.523, -40.6766, 220.771, -55.9123, 225.385, -55.9301, 225.547, -61.1995, 230.396, -61.2722, 230.554, -65.8293, 245.497, -66.2221, 245.562, -70.305, 278.5, -70.5 )
 
 [node name="Kill zone" type="Area2D" parent="Arm joint"]
 position = Vector2( -188.25, 111.202 )
@@ -104,3 +575,51 @@ script = ExtResource( 3 )
 position = Vector2( -749.465, -257.472 )
 rotation = 0.513413
 shape = SubResource( 101 )
+
+[node name="Danger" type="TileMap" parent="Arm joint" groups=["dangers"]]
+rotation = 0.523599
+scale = Vector2( 0.25, 0.25 )
+tile_set = SubResource( 107 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -196612, 3, 0, -196611, 3, 0, -196610, 3, 0, -196609, 3, 0, -262144, 3, 0, -131079, 3, 0, -131078, 3, 0, -131077, 3, 0, -65544, 3, 0, -9, 3, 0, 327659, -1073741819, 0, 327660, -1610612731, 0, 393195, -1073741819, 0, 393196, -1610612731, 0, 458731, -1073741819, 0, 524267, -1073741819, 0, 524268, -1073741819, 0, 524269, -1610612731, 0, 589803, -1073741819, 0, 589804, -1073741819, 0, 589805, -1610612731, 0, 655339, -1073741819, 0, 655340, -1073741819, 0, 655341, -1610612731, 0, 720875, -1073741819, 0, 720876, -1073741819, 0, 720877, -1610612731, 0, 786412, -1073741819, 0, 786413, -1610612731, 0, 851948, -1073741819, 0, 851949, -1610612731, 0, 917484, -1073741819, 0, 917485, -1610612731, 0, 982993, 3, 0, 982994, 3, 0, 982995, 3, 0, 982996, 3, 0, 982997, 3, 0, 982998, 3, 0, 982999, 3, 0, 983000, 3, 0, 983001, 3, 0, 983002, 3, 0, 983006, 3, 0, 983007, 3, 0, 983008, 3, 0, 983009, 3, 0, 983010, 3, 0, 983011, 3, 0, 983012, 3, 0, 983013, 3, 0, 983014, 3, 0, 983015, 3, 0, 983016, 3, 0, 983017, 3, 0, 983018, 3, 0, 983019, 3, 0, 983020, 3, 0, 983021, 3, 0, 983022, 3, 0, 983023, 3, 0, 983024, 3, 0, 983025, 3, 0, 983026, 3, 0, 983027, 3, 0, 983028, 3, 0, 983029, 3, 0 )
+
+[node name="TileMap1" type="TileMap" parent="Arm joint"]
+position = Vector2( 0, 5 )
+rotation = 0.523599
+scale = Vector2( 0.5, 0.5 )
+tile_set = SubResource( 106 )
+cell_size = Vector2( 71, 69 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -458757, 3, 0, -458756, 2, 0, -458755, 2, 0, -458754, 2, 0, -458753, 2, 0, -524288, 2, 0, -524287, 2, 0, -524286, 2, 0, -524285, 2, 0, -524284, 2, 0, -524283, 2, 0, -524282, 2, 0, -524281, 2, 0, -524280, 2, 0, -524279, 2, 0, -524278, 2, 0, -524277, 2, 0, -524276, 1, 0, -393226, 3, 0, -393225, 1, 0, -196616, 3, 0, -196615, 1, 0, -40, -1073741824, 0, -39, 0, 0, -23, -1073741824, 0, -22, 0, 0, -17, -1073741824, 0, -16, 0, 0, -11, -1073741824, 0, -10, 0, 0, 65496, -1073741819, 0, 65497, -1610612731, 0, 65513, -1073741819, 0, 65514, -1610612731, 0, 65519, -1073741819, 0, 65520, -1610612731, 0, 65525, -1073741819, 0, 65526, -1610612731, 0, 131032, -1073741819, 0, 131033, -1610612731, 0, 131049, -1073741819, 0, 131050, -1610612731, 0, 131055, -1073741819, 0, 131056, -1610612731, 0, 131061, -1073741819, 0, 131062, -1610612731, 0, 196568, -1073741819, 0, 196569, -1610612731, 0, 196585, -1073741819, 0, 196586, -1610612731, 0, 196591, -1073741819, 0, 196592, -1610612731, 0, 196597, -1073741819, 0, 196598, -1610612731, 0, 262104, -1073741819, 0, 262105, -1610612731, 0, 262115, 3, 0, 262116, 1, 0, 262121, -1073741819, 0, 262122, -1610612731, 0, 262127, -1073741819, 0, 262128, -1610612731, 0, 262133, -1073741819, 0, 262134, -1610612731, 0, 327640, -1073741819, 0, 327641, -1610612731, 0, 327657, -1073741819, 0, 327658, -1610612731, 0, 327663, -1073741819, 0, 327664, -1610612731, 0, 327669, -1073741819, 0, 327670, -1610612731, 0, 393176, -1073741819, 0, 393177, -1610612731, 0, 393183, 3, 0, 393184, 1, 0, 393193, -1073741819, 0, 393194, -1610612731, 0, 393199, -1073741819, 0, 393200, -1610612731, 0, 393205, -1073741819, 0, 393206, -1610612731, 0, 458712, -1073741819, 0, 458713, -1610612731, 0, 458729, -1073741819, 0, 458730, -1610612731, 0, 458735, -1073741819, 0, 458736, -1610612731, 0, 458741, -1073741819, 0, 458742, -1610612731, 0 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2( -102.286, -554.143 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2( 1, 1 )
+shape = SubResource( 108 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, 24 )
+scale = Vector2( 2, 1 )
+shape = SubResource( 108 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Hitbox"]
+self_modulate = Color( 0, 2, 14, 1 )
+position = Vector2( 1.92858, 2.64288 )
+scale = Vector2( 102.429, 95.5714 )
+mesh = SubResource( 109 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Hitbox"]
+environment = SubResource( 110 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Hitbox/WorldEnvironment"]
+environment = SubResource( 110 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Hitbox/WorldEnvironment/WorldEnvironment"]
+environment = SubResource( 110 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
