@@ -6,7 +6,6 @@
 [ext_resource path="res://Levels/OnOff tiles.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Images/brick.png" type="Texture" id=6]
 
-
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 96, 0, 96, 96, 0, 96 )
 
