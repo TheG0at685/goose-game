@@ -53,7 +53,7 @@ func _process(delta):
 					yield(get_tree().create_timer(delay),"timeout")
 				gravity_scale = 15
 				fall()
-			for enemy in get_tree().get_nodes_in_group("enemys"):
+		for enemy in get_tree().get_nodes_in_group("enemys"):
 				if $Area2D.overlaps_body(enemy) and fall_on_enemy_touch: 
 					if delay > 0:
 						yield(get_tree().create_timer(delay),"timeout")

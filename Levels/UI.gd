@@ -7,7 +7,7 @@ var coins = 0
 onready var player = get_parent().get_node("Player")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$"Black overlay".hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,6 +20,7 @@ func _process(_delta):
 		if Input.is_action_just_released("x"):
 			$"Cutscene player".stop()
 			$"Cutscene player".emit_signal("finished")
+		
 
 
 	

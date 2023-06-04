@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Levels/UI.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -13,10 +13,13 @@
 [ext_resource path="res://Levels/CanvasModulate.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Images/goose_idle.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Images/castle tle2.png" type="Texture" id=13]
-[ext_resource path="res://Assets/cutscene.ogv" type="VideoStream" id=14]
+[ext_resource path="res://Levels/Cutscene_player.gd" type="Script" id=15]
 [ext_resource path="res://Levels/Camera2D.gd" type="Script" id=18]
 
 [sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="VideoStreamTheora" id=99]
+file = "res://Assets/Boss_die.ogv"
 
 [sub_resource type="Animation" id=13]
 length = 0.001
@@ -583,9 +586,11 @@ layer = 128
 script = ExtResource( 1 )
 
 [node name="Cutscene player" type="VideoPlayer" parent="UI"]
+pause_mode = 2
 margin_right = 1038.0
 margin_bottom = 603.0
-stream = ExtResource( 14 )
+stream = SubResource( 99 )
+script = ExtResource( 15 )
 
 [node name="ScreenFade" type="ColorRect" parent="UI"]
 visible = false
@@ -675,6 +680,11 @@ rect_scale = Vector2( 3, 3 )
 script = ExtResource( 6 )
 
 [node name="Second" type="Timer" parent="UI/Time"]
+
+[node name="Black overlay" type="ColorRect" parent="UI"]
+margin_right = 1079.0
+margin_bottom = 630.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 script = ExtResource( 9 )

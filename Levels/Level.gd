@@ -17,7 +17,8 @@ var menu_instance = pause_menu.instance()
 var run_speed = 0
 var current_song = null
 var shown_gun_tutorial = false
-
+var boss
+var played = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,6 +35,12 @@ func _process(_delta):
 		$ParallaxBackground2.mode = "temple"
 	else:
 		$ParallaxBackground2.mode = "desert"
+	if not played and not boss == null and weakref(boss).get_ref():
+		if boss.phase == 4:
+			boss.queue_free()
+			played = true
+			$"UI/Cutscene player".stream = load("res://Assets/boss_die.ogv")
+			$"UI/Cutscene player".play()
 
 func change_level(pos):
 	# Reset the scrolling background
@@ -97,11 +104,16 @@ func play():
 	else:
 		$Player/AudioStreamPlayer2D.stop()
 
-		
+
 
 
 func _on_Cutscene_player_finished():
-	get_tree().paused = false
-	var boss = load("res://Boss.tscn").instance()
-	level_instance.add_child(boss)
-	boss.position = Vector2(5000, -2800)
+	if $"UI/Cutscene player".stream == load("res://Assets/enter_boss.ogv"):
+		boss = load("res://Boss.tscn").instance()
+		get_tree().paused = false
+		level_instance.add_child(boss)
+		boss.position = Vector2(5000, -2800)
+	elif $"UI/Cutscene player".stream == load("res://Assets/enter_boss.ogv"):
+		boss.queue_free()
+		get_tree().paused = false
+		$"UI/Black overlay".show()
