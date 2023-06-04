@@ -533,7 +533,7 @@ glow_blend_mode = 0
 adjustment_brightness = 1.65
 
 [sub_resource type="RectangleShape2D" id=112]
-extents = Vector2( 826.214, 10 )
+extents = Vector2( 1206.89, 10 )
 
 [sub_resource type="QuadMesh" id=113]
 
@@ -625,10 +625,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5.9, 6, 7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 5.9, 6, 7, 7.8, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 2, 14, 0 ), Color( 0, 2, 14, 0 ), Color( 0, 2, 14, 0.101961 ), Color( 0, 2, 14, 1 ) ]
+"values": [ Color( 0, 2, 14, 0 ), Color( 0, 2, 14, 0 ), Color( 0, 2, 14, 0.101961 ), Color( 0, 2, 14, 1 ), Color( 0, 2, 14, 1 ), Color( 0, 0, 45.37, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape2D/MeshInstance2D:scale")
@@ -640,7 +640,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 5.9, 6, 7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1650, 20 ), Vector2( 1650, 20 ), Vector2( 1650, 20 ), Vector2( 1650, 50 ) ]
+"values": [ Vector2( 2460.14, 20 ), Vector2( 2460.14, 20 ), Vector2( 2460.14, 20 ), Vector2( 2460, 50 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D/MeshInstance2D:visible")
@@ -774,14 +774,14 @@ position = Vector2( -101.571, -553.571 )
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Laser"]
-position = Vector2( -868.143, -6.10352e-05 )
-scale = Vector2( 1, 1 )
+position = Vector2( -1248.82, -6.10352e-05 )
+scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 112 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Laser/CollisionShape2D"]
 visible = false
 self_modulate = Color( 0, 2, 14, 0 )
-position = Vector2( -0.714111, 6.10352e-05 )
+position = Vector2( 23.6073, 1.78577 )
 scale = Vector2( 1650, 20 )
 mesh = SubResource( 113 )
 
@@ -795,7 +795,7 @@ process_material = SubResource( 114 )
 emitting = false
 amount = 2000
 emission_shape = 2
-emission_rect_extents = Vector2( 900, 10 )
+emission_rect_extents = Vector2( 1300, 10 )
 direction = Vector2( 0, 0 )
 gravity = Vector2( -100, 0 )
 initial_velocity = 145.16
