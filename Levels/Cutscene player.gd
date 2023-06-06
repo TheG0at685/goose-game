@@ -23,3 +23,4 @@ func _on_Timer_timeout():
 		get_tree().paused = true
 		get_tree().current_scene.current_song = "res://Assets/sounds/The deadly temple.wav"
 		get_tree().current_scene.play()
+		get_tree().current_scene.get_node("Player").position = Vector2(-10000, -1800)
