@@ -11,8 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $CollisionShape2D/Particles2D.emitting and overlaps_body(player):
+	if ($CollisionShape2D/Particles2D.emitting or $CollisionShape2D/CPUParticles2D.emitting) and overlaps_body(player):
 		player.health = -1
+		print("DIE")
 		
 
 func fire_laser():

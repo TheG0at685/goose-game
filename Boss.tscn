@@ -492,14 +492,8 @@ points = PoolVector2Array( 0, 0, 74, 0, 74, 70, 0, 70 )
 10/shape_offset = Vector2( 0, 0 )
 10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 10/shape_one_way = false
-10/shape_one_way_margin = 1.0
-10/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": null,
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
 10/z_index = 0
 11/name = "desert tile map.png 11"
 11/texture = ExtResource( 5 )
@@ -610,10 +604,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape2D/CPUParticles2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=116]
 resource_name = "Shoot"
-length = 11.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D/MeshInstance2D:self_modulate")
 tracks/0/interp = 1
@@ -621,7 +627,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5.9, 6, 7, 7.8, 8 ),
+"times": PoolRealArray( 0, 1.6, 1.7, 2.7, 3.5, 3.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 2, 14, 0 ), Color( 0, 2, 14, 0 ), Color( 0, 2, 14, 0.101961 ), Color( 0, 2, 14, 1 ), Color( 0, 2, 14, 1 ), Color( 0, 0, 45.37, 1 ) ]
@@ -633,7 +639,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5.9, 6, 7 ),
+"times": PoolRealArray( 0, 1.6, 1.7, 2.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2460.14, 20 ), Vector2( 2460.14, 20 ), Vector2( 2460.14, 20 ), Vector2( 2460, 50 ) ]
@@ -645,7 +651,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 6 ),
+"times": PoolRealArray( 0, 1.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -657,7 +663,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 8 ),
+"times": PoolRealArray( 0, 3.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -669,7 +675,19 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 8 ),
+"times": PoolRealArray( 0, 3.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape2D/CPUParticles2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -725,7 +743,7 @@ scale = Vector2( 0.25, 0.25 )
 tile_set = SubResource( 107 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( -196612, 3, 0, -196611, 3, 0, -196610, 3, 0, -196609, 3, 0, -262144, 3, 0, -131079, 3, 0, -131078, 3, 0, -131077, 3, 0, -65544, 3, 0, -9, 3, 0, 327659, -1073741819, 0, 327660, -1610612731, 0, 393195, -1073741819, 0, 393196, -1610612731, 0, 458731, -1073741819, 0, 524267, -1073741819, 0, 524268, -1073741819, 0, 524269, -1610612731, 0, 589803, -1073741819, 0, 589804, -1073741819, 0, 589805, -1610612731, 0, 655339, -1073741819, 0, 655340, -1073741819, 0, 655341, -1610612731, 0, 720875, -1073741819, 0, 720876, -1073741819, 0, 720877, -1610612731, 0, 786412, -1073741819, 0, 786413, -1610612731, 0, 851948, -1073741819, 0, 851949, -1610612731, 0, 917484, -1073741819, 0, 917485, -1610612731, 0, 982993, 3, 0, 982994, 3, 0, 982995, 3, 0, 982996, 3, 0, 982997, 3, 0, 982998, 3, 0, 982999, 3, 0, 983000, 3, 0, 983001, 3, 0, 983002, 3, 0, 983006, 3, 0, 983007, 3, 0, 983008, 3, 0, 983009, 3, 0, 983010, 3, 0, 983011, 3, 0, 983012, 3, 0, 983013, 3, 0, 983014, 3, 0, 983015, 3, 0, 983016, 3, 0, 983017, 3, 0, 983018, 3, 0, 983019, 3, 0, 983020, 3, 0, 983021, 3, 0, 983022, 3, 0, 983023, 3, 0, 983024, 3, 0, 983025, 3, 0, 983026, 3, 0, 983027, 3, 0, 983028, 3, 0, 983029, 3, 0 )
+tile_data = PoolIntArray( -1179633, 3, 0, -196612, 3, 0, -196611, 3, 0, -196610, 3, 0, -196609, 3, 0, -262144, 3, 0, -131079, 3, 0, -131078, 3, 0, -131077, 3, 0, -65544, 3, 0, -9, 3, 0, 327659, -1073741819, 0, 327660, -1610612731, 0, 393195, -1073741819, 0, 393196, -1610612731, 0, 458700, -1073741821, 0, 458731, -1073741819, 0, 524236, -1073741821, 0, 524267, -1073741819, 0, 524268, -1073741819, 0, 524269, -1610612731, 0, 589772, -1073741821, 0, 589803, -1073741819, 0, 589804, -1073741819, 0, 589805, -1610612731, 0, 655308, -1073741821, 0, 655339, -1073741819, 0, 655340, -1073741819, 0, 655341, -1610612731, 0, 720844, -1073741821, 0, 720875, -1073741819, 0, 720876, -1073741819, 0, 720877, -1610612731, 0, 786380, -1073741821, 0, 786412, -1073741819, 0, 786413, -1610612731, 0, 851916, -1073741821, 0, 851948, -1073741819, 0, 851949, -1610612731, 0, 917452, -1073741821, 0, 917484, -1073741819, 0, 917485, -1610612731, 0, 982971, 3, 0, 982972, 3, 0, 982973, 3, 0, 982974, 3, 0, 982975, 3, 0, 982976, 3, 0, 982977, 3, 0, 982978, 3, 0, 982979, 3, 0, 982980, 3, 0, 982981, 3, 0, 982982, 3, 0, 982983, 3, 0, 982984, 3, 0, 982985, 3, 0, 982986, 3, 0, 982987, 3, 0, 982988, 3, 0, 982993, 3, 0, 982994, 3, 0, 982995, 3, 0, 982996, 3, 0, 982997, 3, 0, 982998, 3, 0, 982999, 3, 0, 983000, 3, 0, 983001, 3, 0, 983002, 3, 0, 983006, 3, 0, 983007, 3, 0, 983008, 3, 0, 983009, 3, 0, 983010, 3, 0, 983011, 3, 0, 983012, 3, 0, 983013, 3, 0, 983014, 3, 0, 983015, 3, 0, 983016, 3, 0, 983017, 3, 0, 983018, 3, 0, 983019, 3, 0, 983020, 3, 0, 983021, 3, 0, 983022, 3, 0, 983023, 3, 0, 983024, 3, 0, 983025, 3, 0, 983026, 3, 0, 983027, 3, 0, 983028, 3, 0, 983029, 3, 0 )
 
 [node name="TileMap1" type="TileMap" parent="Arm joint"]
 position = Vector2( 0, 5 )
@@ -787,6 +805,7 @@ amount = 2000
 process_material = SubResource( 114 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Laser/CollisionShape2D"]
+visible = false
 emitting = false
 amount = 2000
 emission_shape = 2

@@ -108,12 +108,14 @@ func play():
 
 
 func _on_Cutscene_player_finished():
+	print(2)
 	if $"UI/Cutscene player".stream == load("res://Assets/enter_boss.ogv"):
 		boss = load("res://Boss.tscn").instance()
 		get_tree().paused = false
 		level_instance.add_child(boss)
 		boss.position = Vector2(5000, -2800)
-	elif $"UI/Cutscene player".stream == load("res://Assets/enter_boss.ogv"):
-		boss.queue_free()
+	else:
+
 		get_tree().paused = false
-		$"UI/Black overlay".show()
+		$"UI/Black overlay".show()# Get the current round that may have finished
+		get_tree().reload_current_scene()
