@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Levels/UI.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Levels/CanvasModulate.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Images/goose_idle.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Images/castle tle2.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Images/movment_tutorial.png" type="Texture" id=14]
 [ext_resource path="res://Levels/Cutscene_player.gd" type="Script" id=15]
 [ext_resource path="res://Levels/Camera2D.gd" type="Script" id=18]
 
@@ -685,6 +686,10 @@ script = ExtResource( 6 )
 margin_right = 1079.0
 margin_bottom = 630.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="Sprite" type="Sprite" parent="UI"]
+position = Vector2( 150, 567 )
+texture = ExtResource( 14 )
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 script = ExtResource( 9 )

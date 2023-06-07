@@ -4,7 +4,6 @@
 [ext_resource path="res://Assets/Images/falling block.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Images/temple_tilesetcostume1.png" type="Texture" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=88]
 
 [sub_resource type="RectangleShape2D" id=90]
@@ -17,10 +16,10 @@ extents = Vector2( 98.5, 10 )
 emission_shape = 2
 emission_box_extents = Vector3( 100, 1, 1 )
 flag_disable_z = true
-gravity = Vector3( 0, 98, 0 )
+gravity = Vector3( 0, 200, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale = 4.0
+scale = 30.0
 scale_random = 1.0
 color = Color( 0.67451, 0.54902, 0.0196078, 1 )
 hue_variation = 0.1
