@@ -2,13 +2,13 @@ extends KinematicBody2D
 
 var motion=Vector2(0,0)
 const UP=Vector2(0,-1)
-var SPEED=600
+var SPEED=750
 const GRAVITY=51
 const JUMP_SPEED=1200
 const JUMP_SUBLIMIT = 80
 const WORLD_LIMIT=300000000000
 const MAX_BULLETS = 1
-const GUN_STRENGTH = 1.3
+const GUN_STRENGTH = 1.5
 const MAX_MOTION = Vector2(1000, 1500)
 const STOP_SPEED = 20
 const MAX_WALL_SLIDE_SPEED = 20

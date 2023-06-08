@@ -115,7 +115,7 @@ frames = SubResource( 8 )
 animation = "No gun"
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 
 [node name="Collision" type="Area2D" parent="."]
 

@@ -6,7 +6,7 @@ var speed = 200
 var velocity = Vector2()
 var gravity = 0
 var gravity_muilti = 10
-var health = 100
+var health = 45
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

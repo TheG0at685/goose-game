@@ -23,6 +23,8 @@ func _process(delta):
 			if play == "Gun jump":
 				get_tree().current_scene.get_node("Camera2D").shake(60, 0, 15)
 				get_tree().current_scene.get_node("Player").fire_gun(get_tree().current_scene.get_node("Player").position.x - 500, get_tree().current_scene.get_node("Player").position.y + 500)
+				get_tree().current_scene.get_node("Player").motion = Vector2(1000, -1000)
+				get_tree().current_scene.get_node("Player").gun_shots = 0
 				get_tree().current_scene.get_node("Player/Thought").play("defualt")
 	else:
 		if not get_tree().current_scene.menu_instance.paused:
