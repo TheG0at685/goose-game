@@ -31,6 +31,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	play()
+	if Input.is_action_pressed("Reset"):
+		get_tree().reload_current_scene()
+		
+		
+	
 	if level < 11:
 		$ParallaxBackground2.mode = "temple"
 	else:
@@ -60,7 +65,7 @@ func change_level(pos):
 	menu_instance = pause_menu.instance()
 	add_child(menu_instance)
 		
-func new_level(pos, checking):
+func new_level(pos=Vector2(), checking=100000):
 	#$UI/ScreenFade/AnimationPlayer.play("screen fade")
 	$Player.position = pos
 	$Player.motion.x = 0

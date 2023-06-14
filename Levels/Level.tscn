@@ -795,7 +795,6 @@ mesh = SubResource( 9 )
 [node name="Cover" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 128
-visible = false
 script = ExtResource( 8 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Cover"]
@@ -806,16 +805,16 @@ mesh = SubResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="Cover"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 511, 242 )
-scale = Vector2( 1.06562, 1 )
+position = Vector2( 513.5, 343.5 )
+scale = Vector2( 1.8598, 1.63371 )
 texture = ExtResource( 7 )
 
 [node name="Button" type="Button" parent="Cover/Sprite"]
-margin_left = -96.6569
-margin_top = 21.0
-margin_right = -58.6569
-margin_bottom = 41.0
-rect_scale = Vector2( 4, 4 )
+margin_left = -40.0
+margin_top = 35.0
+margin_right = -2.0
+margin_bottom = 55.0
+rect_scale = Vector2( 2, 2 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.968627, 0.937255, 0.937255, 1 )
