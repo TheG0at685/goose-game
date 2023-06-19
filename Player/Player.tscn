@@ -112,6 +112,7 @@ script = ExtResource( 8 )
 position = Vector2( 64, 2.67719 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
+animation = "No gun"
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.5

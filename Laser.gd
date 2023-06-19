@@ -13,7 +13,7 @@ func _ready():
 func _process(delta):
 	if ($CollisionShape2D/Particles2D.emitting or $CollisionShape2D/CPUParticles2D.emitting) and overlaps_body(player):
 		player.health = -1
-	print($CollisionShape2D/Particles2D.emitting)
+		print("DIE")
 		
 
 func fire_laser():

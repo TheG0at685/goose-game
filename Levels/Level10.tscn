@@ -366,10 +366,10 @@ position = Vector2( -6832, -2836 )
 position = Vector2( -6975, -2839 )
 
 [node name="Toast4" parent="." instance=ExtResource( 8 )]
-position = Vector2( -6740, -2856 )
+position = Vector2( -6839, -3036 )
 
 [node name="Toast5" parent="." instance=ExtResource( 8 )]
-position = Vector2( -7135, -2795 )
+position = Vector2( -6982, -3039 )
 
 [node name="Toast6" parent="." instance=ExtResource( 8 )]
 position = Vector2( -8967, -2856 )
@@ -378,10 +378,10 @@ position = Vector2( -8967, -2856 )
 position = Vector2( -9110, -2859 )
 
 [node name="Toast8" parent="." instance=ExtResource( 8 )]
-position = Vector2( -8812, -2839 )
+position = Vector2( -8974, -3056 )
 
 [node name="Toast9" parent="." instance=ExtResource( 8 )]
-position = Vector2( -9234, -2815 )
+position = Vector2( -9117, -3059 )
 
 [node name="Falling bridge" parent="." instance=ExtResource( 9 )]
 position = Vector2( -2947, 182 )

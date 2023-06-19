@@ -823,7 +823,6 @@ custom_colors/font_color_pressed = Color( 0.890196, 0.839216, 0.839216, 1 )
 text = "Play"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Cover"]
-position = Vector2( -46, -10 )
 stream = ExtResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
