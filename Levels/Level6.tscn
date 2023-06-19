@@ -1,9 +1,8 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Levels/temple blocks.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Images/spike.png" type="Texture" id=2]
 [ext_resource path="res://Levels/OnOff tiles.gd" type="Script" id=4]
-[ext_resource path="res://Levels/Moving saw.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Falling object.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Level portal.gd" type="Script" id=7]
 
@@ -573,20 +572,6 @@ modulate = Color( 0.999999, 100, 83.7578, 0.02 )
 position = Vector2( 15, 0.999997 )
 scale = Vector2( 23.5, 112 )
 mesh = SubResource( 86 )
-
-[node name="Moving saw" parent="." instance=ExtResource( 5 )]
-position = Vector2( -648, 100 )
-rotation = 3087.7
-scale = Vector2( 2, 2 )
-position1 = Vector2( -648, 100 )
-position2 = Vector2( -650, -350 )
-
-[node name="Moving saw2" parent="." instance=ExtResource( 5 )]
-position = Vector2( -1000, 100 )
-rotation = 3087.7
-scale = Vector2( 2, 2 )
-position1 = Vector2( -1000, 100 )
-position2 = Vector2( -1000, -350 )
 
 [node name="Falling object" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1004, 1751 )

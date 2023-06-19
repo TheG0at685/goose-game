@@ -13,13 +13,12 @@ func _ready():
 func _process(delta):
 	if ($CollisionShape2D/Particles2D.emitting or $CollisionShape2D/CPUParticles2D.emitting) and overlaps_body(player):
 		player.health = -1
-		print("DIE")
-		
 
 func fire_laser():
-	look_at(player.position)
-	rotation_degrees += 180
-	$AnimationPlayer.play("Shoot")
+	if not $AnimationPlayer.is_playing():
+		look_at(player.position)
+		rotation_degrees += 180
+		$AnimationPlayer.play("Shoot")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

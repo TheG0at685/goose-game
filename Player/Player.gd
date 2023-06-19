@@ -494,3 +494,6 @@ func get_mouse_direction(player_pos: Vector2) -> Vector2:
 		var direction = Vector2(Input.get_joy_axis(0, JOY_AXIS_2), Input.get_joy_axis(0, JOY_AXIS_3)).normalized()
 		return direction
 
+
+
+
