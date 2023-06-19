@@ -2,7 +2,7 @@
 extends KinematicBody2D
 
 export var moving = true
-export var speed = 3
+export var speed = 2
 export var spin_speed = 5
 export var position1 = Vector2()
 export var position2 = Vector2()
