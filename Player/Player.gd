@@ -430,9 +430,7 @@ func die():
 	if health < 0 and not godmode:
 		get_parent().change_level(Vector2(0, 0))
 		health = 100
-		position = respawn
-		position = Vector2(0,0)
-		motion = Vector2(0,1000)
+		motion = Vector2(0, 0)
 
 		if lives < 1:
 			get_parent().change_level(Vector2(0, 0))

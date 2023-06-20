@@ -11,7 +11,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(killable)
 	if overlaps_body(player):
 		modulate.a8 = 255
 	else:
@@ -22,6 +21,9 @@ func _process(delta):
 				if overlaps_area(bullet.get_node("Collision")):
 					get_parent().get_node("AnimationPlayer").play("flash")
 					killable = false
+		if not killable:
+			for b in get_tree().get_nodes_in_group("bullets"):
+				b.queue_free()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

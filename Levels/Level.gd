@@ -17,7 +17,7 @@ var menu_instance = pause_menu.instance()
 var run_speed = 0
 var current_song = null
 var shown_gun_tutorial = false
-var boss
+var boss = null
 var played = false
 
 # Called when the node enters the scene tree for the first time.
@@ -30,6 +30,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	print(boss)
 	play()
 	if Input.is_action_pressed("Reset"):
 		get_tree().reload_current_scene()
@@ -48,22 +49,27 @@ func _process(_delta):
 			$"UI/Cutscene player".play()
 
 func change_level(pos):
-	# Reset the scrolling background
-	$ParallaxBackground2.offset = Vector2(0, 0)
-	for enemy in enemys:
-		enemy.queue_free()
-	enemys.clear()
-	remove_child(level_instance)
-	menu_instance.queue_free()
+	if boss == null:
+		# Reset the scrolling background
+		$ParallaxBackground2.offset = Vector2(0, 0)
+		for enemy in enemys:
+			enemy.queue_free()
+		enemys.clear()
+		remove_child(level_instance)
+		menu_instance.queue_free()
 
-	for e in enemys:
-		remove_child(e)
-	level_instance.queue_free()
-	new_level(pos, 99999)
+		for e in enemys:
+			remove_child(e)
+		level_instance.queue_free()
+		new_level(pos, 99999)
 		
-	pause_menu = load("res://Pause menu.tscn")
-	menu_instance = pause_menu.instance()
-	add_child(menu_instance)
+		pause_menu = load("res://Pause menu.tscn")
+		menu_instance = pause_menu.instance()
+		add_child(menu_instance)
+	else:
+		$Player.position = Vector2(-10000, -1800)
+		boss.get_node("Laser/AnimationPlayer").stop()
+		boss.get_node("Laser/AnimationPlayer").play("Shoot")
 		
 func new_level(pos=Vector2(), checking=100000):
 	#$UI/ScreenFade/AnimationPlayer.play("screen fade")
